@@ -1,0 +1,337 @@
+{
+  "clients": [
+    {
+      "id": "CLI-1787310988416",
+      "name": "DAVE",
+      "instagram": "@darinda.fx",
+      "secretKey": "DAVE",
+      "access": "Active"
+    }
+  ],
+  "invoices": [],
+  "deliverables": [
+    {
+      "id": "DEL-1787312638672",
+      "client": "DAVE",
+      "title": "test 2",
+      "price": 800,
+      "locked": false,
+      "watermark": "/uploads/1787312638662_1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "master": "/uploads/1787312638667_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "timestamp": "2026-08-21T11:43:58.672Z"
+    }
+  ],
+  "utr": [],
+  "raw": [
+    {
+      "id": "RAW-1787312176078522",
+      "client": "DAVE",
+      "filename": "SnapInsta.to_AQMG0n683SWaTprt6av1oqFhgJtN87HW4RJE6coqpnmxyn7KSM4TBbk_0jXoSxcM_pl3rizjgQ4cmEDAAhuoSoHp7WmVefUgLrFD7i0.mp4",
+      "storedName": "1787312176070_SnapInsta.to_AQMG0n683SWaTprt6av1oqFhgJtN87HW4RJE6coqpnmxyn7KSM4TBbk_0jXoSxcM_pl3rizjgQ4cmEDAAhuoSoHp7WmVefUgLrFD7i0.mp4",
+      "fileUrl": "/uploads/1787312176070_SnapInsta.to_AQMG0n683SWaTprt6av1oqFhgJtN87HW4RJE6coqpnmxyn7KSM4TBbk_0jXoSxcM_pl3rizjgQ4cmEDAAhuoSoHp7WmVefUgLrFD7i0.mp4",
+      "size": 2888248,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:36:16.078Z"
+    },
+    {
+      "id": "RAW-1787312176078753",
+      "client": "DAVE",
+      "filename": "4k part  (2).mp4",
+      "storedName": "1787312175989_4k_part___2_.mp4",
+      "fileUrl": "/uploads/1787312175989_4k_part___2_.mp4",
+      "size": 30051346,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:36:16.078Z"
+    },
+    {
+      "id": "RAW-1787312176078826",
+      "client": "DAVE",
+      "filename": "SnapInsta.to_AQPnwCNmm0pFNsM_rf4iis5_R8o_pvyydmam5tImEZ-JbyTXzQpk89BJPEwYpyZswVd3sVpPeib2vW2XQUTGlnGwdoVy8eb0Fq1mXT8.mp4",
+      "storedName": "1787312175960_SnapInsta.to_AQPnwCNmm0pFNsM_rf4iis5_R8o_pvyydmam5tImEZ-JbyTXzQpk89BJPEwYpyZswVd3sVpPeib2vW2XQUTGlnGwdoVy8eb0Fq1mXT8.mp4",
+      "fileUrl": "/uploads/1787312175960_SnapInsta.to_AQPnwCNmm0pFNsM_rf4iis5_R8o_pvyydmam5tImEZ-JbyTXzQpk89BJPEwYpyZswVd3sVpPeib2vW2XQUTGlnGwdoVy8eb0Fq1mXT8.mp4",
+      "size": 3027878,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:36:16.078Z"
+    },
+    {
+      "id": "RAW-1787312176078353",
+      "client": "DAVE",
+      "filename": "1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "storedName": "1787312175954_1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "fileUrl": "/uploads/1787312175954_1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "size": 1808547,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:36:16.078Z"
+    },
+    {
+      "id": "RAW-1787311576530612",
+      "client": "DAVE",
+      "filename": "4k part  (1).mp4",
+      "storedName": "1787311397872_4k_part___1_.mp4",
+      "fileUrl": "/uploads/1787311397872_4k_part___1_.mp4",
+      "size": 27789392,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:26:16.530Z"
+    },
+    {
+      "id": "RAW-1787311531518666",
+      "client": "DAVE",
+      "filename": "4k part  (2).mp4",
+      "storedName": "1787311397786_4k_part___2_.mp4",
+      "fileUrl": "/uploads/1787311397786_4k_part___2_.mp4",
+      "size": 30051346,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:25:31.518Z"
+    },
+    {
+      "id": "RAW-1787311486508583",
+      "client": "DAVE",
+      "filename": "SnapInsta.to_AQM8WeZjqylXwGzidT8xPkjnM81hbKswXom9ien_qtEJh1R2BLZvyXQrJGQBC8f1vvBRBNgC47MQQnMZHi6phQCxC8sVI-osJ_F8aWI.mov",
+      "storedName": "1787311397783_SnapInsta.to_AQM8WeZjqylXwGzidT8xPkjnM81hbKswXom9ien_qtEJh1R2BLZvyXQrJGQBC8f1vvBRBNgC47MQQnMZHi6phQCxC8sVI-osJ_F8aWI.mov",
+      "fileUrl": "/uploads/1787311397783_SnapInsta.to_AQM8WeZjqylXwGzidT8xPkjnM81hbKswXom9ien_qtEJh1R2BLZvyXQrJGQBC8f1vvBRBNgC47MQQnMZHi6phQCxC8sVI-osJ_F8aWI.mov",
+      "size": 1487468,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": "BQACAgUAAyEGAAMBAAHi8IsAAxpqiDV-WHcZ11A2XjqCWey9nlBvQQAC9iEAAg6sSFQNWEWH67BwjT0E",
+      "timestamp": "2026-08-21T11:24:46.508Z"
+    },
+    {
+      "id": "RAW-1787311475854535",
+      "client": "DAVE",
+      "filename": "SnapInsta.to_AQPNg1T068QuUivwa_78iFZhoAugiJ-Q8mn0Q-S3akpj4G9MUSKCrhQWGYwJqTwkqAKq0JlTz5QwNENlloPlnAmzcz1O6rUJqdslpcg.mp4",
+      "storedName": "1787311397781_SnapInsta.to_AQPNg1T068QuUivwa_78iFZhoAugiJ-Q8mn0Q-S3akpj4G9MUSKCrhQWGYwJqTwkqAKq0JlTz5QwNENlloPlnAmzcz1O6rUJqdslpcg.mp4",
+      "fileUrl": "/uploads/1787311397781_SnapInsta.to_AQPNg1T068QuUivwa_78iFZhoAugiJ-Q8mn0Q-S3akpj4G9MUSKCrhQWGYwJqTwkqAKq0JlTz5QwNENlloPlnAmzcz1O6rUJqdslpcg.mp4",
+      "size": 1085599,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:24:35.854Z"
+    },
+    {
+      "id": "RAW-1787311442953880",
+      "client": "DAVE",
+      "filename": "SnapInsta.to_AQPnwCNmm0pFNsM_rf4iis5_R8o_pvyydmam5tImEZ-JbyTXzQpk89BJPEwYpyZswVd3sVpPeib2vW2XQUTGlnGwdoVy8eb0Fq1mXT8.mp4",
+      "storedName": "1787311397769_SnapInsta.to_AQPnwCNmm0pFNsM_rf4iis5_R8o_pvyydmam5tImEZ-JbyTXzQpk89BJPEwYpyZswVd3sVpPeib2vW2XQUTGlnGwdoVy8eb0Fq1mXT8.mp4",
+      "fileUrl": "/uploads/1787311397769_SnapInsta.to_AQPnwCNmm0pFNsM_rf4iis5_R8o_pvyydmam5tImEZ-JbyTXzQpk89BJPEwYpyZswVd3sVpPeib2vW2XQUTGlnGwdoVy8eb0Fq1mXT8.mp4",
+      "size": 3027878,
+      "note": "MULTI TESTING",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:24:02.953Z"
+    },
+    {
+      "id": "RAW-1787311094869390",
+      "client": "DAVE",
+      "filename": "1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "storedName": "1787311050535_1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "fileUrl": "/uploads/1787311050535_1787309496864_1787304854049_SnapInsta.to_AQMYgN0FtEHi8y-S-SUO6xAZ-ZRndeWe4Fsm0kS-I0ctXwxGpejaGafCXFDYaeQsVTnRI7aaqONu6i80h8YWdYHQvihtHb5qN7ABs7Q.mp4",
+      "size": 1808547,
+      "note": "DAVE TESTING 1",
+      "reference": "https://www.instagram.com/reel/DYyxbyZRV_I/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      "drive": "",
+      "tgFileId": null,
+      "timestamp": "2026-08-21T11:18:14.869Z"
+    }
+  ],
+  "feedback": [
+    {
+      "client": "DAVE",
+      "text": "01",
+      "rating": 5,
+      "timestamp": "2026-08-21"
+    },
+    {
+      "client": "DAVE",
+      "text": "DAVE TESTING 1",
+      "rating": 5,
+      "timestamp": "2026-08-21"
+    },
+    {
+      "client": "DAVE",
+      "text": "NOT BAD",
+      "rating": 1,
+      "timestamp": "2026-08-21"
+    },
+    {
+      "client": "DAVE",
+      "text": "TESTING9",
+      "rating": 5,
+      "timestamp": "2026-08-21"
+    },
+    {
+      "client": "DAVE",
+      "text": "TESTING8",
+      "rating": 5,
+      "timestamp": "2026-08-21"
+    },
+    {
+      "client": "DAVE",
+      "text": "777",
+      "rating": 5,
+      "timestamp": "2026-08-21"
+    },
+    {
+      "client": "DAVE",
+      "text": "7",
+      "rating": 4
+    },
+    {
+      "client": "Rahul Sharma",
+      "text": "TEST 6",
+      "rating": 5
+    },
+    {
+      "client": "Rahul Sharma",
+      "text": "test 5",
+      "rating": 3
+    },
+    {
+      "client": "Rahul Sharma",
+      "rating": 5,
+      "text": "Insane video transitions!"
+    }
+  ],
+  "kry": [
+    {
+      "id": "KRY-1787311006603",
+      "client": "DAVE",
+      "token": "KRY-2026-31TVX1",
+      "tier": "VIP Preset Access",
+      "status": "Active",
+      "createdAt": "2026-08-21T11:16:46.603Z"
+    },
+    {
+      "id": "KRY-1787305743979",
+      "client": "RONAAK",
+      "token": "KRY-2026-DV54MQ",
+      "tier": "Pro 4K Render Pass",
+      "status": "Revoked",
+      "createdAt": "2026-08-21T09:49:03.979Z"
+    },
+    {
+      "id": "KRY-1787302678966",
+      "client": "DAVE",
+      "token": "KRY-2026-57JUBT",
+      "tier": "VIP Preset Access",
+      "status": "Revoked",
+      "createdAt": "2026-08-21T08:57:58.966Z"
+    },
+    {
+      "id": "KRY-1787296604637",
+      "client": "DARINDA",
+      "token": "KRY-2026-OFAN2C",
+      "tier": "VIP Preset Access",
+      "status": "Revoked",
+      "createdAt": "2026-08-21T07:16:44.637Z"
+    },
+    {
+      "id": "KRY-01",
+      "client": "Rahul Sharma",
+      "token": "KRY-2026-PRO99",
+      "tier": "Pro 4K Render Pass",
+      "status": "Revoked"
+    }
+  ],
+  "chats": {
+    "Rahul Sharma": [
+      {
+        "sender": "client",
+        "text": "Hey bro! Just uploaded raw footage."
+      },
+      {
+        "sender": "Studio",
+        "text": "Received! Editing now."
+      },
+      {
+        "sender": "client",
+        "text": "test 5",
+        "time": "12:52:33 pm"
+      },
+      {
+        "sender": "client",
+        "text": "TEST 6",
+        "time": "1:17:58 pm"
+      },
+      {
+        "sender": "admin",
+        "text": "DONE",
+        "time": "1:18:13 pm"
+      }
+    ],
+    "DAVE": [
+      {
+        "sender": "client",
+        "text": "777",
+        "time": "2:29:50 pm"
+      },
+      {
+        "sender": "client",
+        "text": "777",
+        "time": "02:42 pm"
+      },
+      {
+        "sender": "client",
+        "text": "8",
+        "time": "02:51 pm"
+      },
+      {
+        "sender": "client",
+        "text": "9",
+        "time": "03:04 pm"
+      },
+      {
+        "sender": "Studio",
+        "text": "TESTING999",
+        "time": "3:08:59 pm"
+      },
+      {
+        "sender": "client",
+        "text": "DONE",
+        "time": "03:09 pm"
+      },
+      {
+        "sender": "client",
+        "text": "khcjtd",
+        "time": "03:12 pm"
+      },
+      {
+        "sender": "client",
+        "text": "DAVE TWSTIN",
+        "time": "04:49 pm"
+      },
+      {
+        "sender": "client",
+        "text": "10",
+        "time": "05:06 pm"
+      }
+    ],
+    "RONAAK": [
+      {
+        "sender": "client",
+        "text": "hi",
+        "time": "03:19 pm"
+      }
+    ]
+  }
+}
