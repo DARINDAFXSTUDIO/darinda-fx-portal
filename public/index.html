@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>DARINDA.FX | Client Workspace</title>
-    <!-- PWA & Mobile App Meta Tags -->
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -482,29 +481,30 @@ function urlBase64ToUint8Array(base64String) {
     return outputArray;
 }
 
-// 🔔 AUTO-REGISTER PUSH NOTIFICATION TOKEN WITH SERVER
+// 🔔 AUTO-RESET & SYNC PUSH NOTIFICATION TOKEN WITH SERVER
 async function syncPushSubscription() {
     if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
     try {
         const reg = await navigator.serviceWorker.ready;
+        const keyRes = await backendApi('/api/push/public-key');
+        if (!keyRes?.publicKey) return;
+
         let sub = await reg.pushManager.getSubscription();
-        
-        if (!sub) {
-            const keyRes = await backendApi('/api/push/public-key');
-            if (!keyRes?.publicKey) return;
-            
-            sub = await reg.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: urlBase64ToUint8Array(keyRes.publicKey)
-            });
+        if (sub) {
+            try { await sub.unsubscribe(); } catch(e) {}
         }
         
-        if (sub) {
+        sub = await reg.pushManager.subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: urlBase64ToUint8Array(keyRes.publicKey)
+        });
+        
+        if (sub && window.currentClient) {
             await backendApi('/api/push/subscribe', {
                 method: 'POST',
                 body: JSON.stringify({ subscription: sub })
             });
-            console.log('✅ Push notification subscription active');
+            console.log('✅ Push notification active for', window.currentClient);
         }
     } catch (e) {
         console.log('Push subscription sync notice:', e);
@@ -623,7 +623,6 @@ async function handleClientAuth(autoKey = null) {
         showAppleToast(`Welcome back, ${window.currentClient}!`, "👋");
         window.dfxRefreshClientPortal();
         
-        // REQUEST PUSH PERMISSION & SYNC TOKEN
         if ('Notification' in window) {
             Notification.requestPermission().then(() => syncPushSubscription());
         }
@@ -665,7 +664,6 @@ async function handleLogout() {
     }
 })();
 
-// BATCH-AWARE REFRESH
 window.dfxRefreshClientPortal = async function() {
     if (!window.currentClient) return;
     try {

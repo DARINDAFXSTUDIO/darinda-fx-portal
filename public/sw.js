@@ -1,5 +1,6 @@
-const CACHE_NAME = "darinda-fx-v3";
+const CACHE_NAME = "darinda-fx-v5";
 
+// Immediate Activation on install
 self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
@@ -8,43 +9,53 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(clients.claim());
 });
 
-// 🔔 ULTRA-CLEAN APPLE/ANDROID NATIVE NOTIFICATION
+// 🔔 ULTRA-CLEAN APPLE-STYLE NOTIFICATION DISPATCHER
 self.addEventListener("push", (event) => {
-  let data = { 
-    title: "DARINDA.FX Studio", 
-    body: "New project update received.", 
-    url: "/" 
+  let payload = {
+    title: "DARINDA.FX Studio",
+    body: "New update in your workspace.",
+    url: "/",
+    tag: "dfx-studio-alert",
+    icon: "/icon-192.png",
+    badge: "/icon-192.png"
   };
-  
+
   if (event.data) {
     try {
-      data = event.data.json();
+      const raw = event.data.json();
+      payload = { ...payload, ...raw };
     } catch (e) {
-      data.body = event.data.text();
+      payload.body = event.data.text() || payload.body;
     }
   }
 
   const options = {
-    body: data.body,
-    icon: "/icon-192.png",       // Large App Logo
-    badge: "/icon-192.png",      // Top status bar icon
-    vibrate: [100, 50, 100],
-    tag: "dfx-notification",     // Prevents spam duplicate stacking
+    body: payload.body,
+    icon: payload.icon || "/icon-192.png",
+    badge: payload.badge || "/icon-192.png",
+    tag: payload.tag || "dfx-notification",
     renotify: true,
+    requireInteraction: false,
+    vibrate: [120, 60, 120],
     data: {
-      url: data.url || "/"
+      url: payload.url || "/",
+      timestamp: Date.now()
     },
     actions: [
-      { action: "open_app", title: "⚡ Open Workspace" }
+      { action: "open_portal", title: "⚡ Open Workspace" }
     ]
   };
 
+  if (payload.image) {
+    options.image = payload.image;
+  }
+
   event.waitUntil(
-    self.registration.showNotification(data.title, options)
+    self.registration.showNotification(payload.title, options)
   );
 });
 
-// ON NOTIFICATION TAP -> FOCUS OR OPEN
+// 🎯 SEAMLESS APP FOCUS ON TAP
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
   const targetUrl = event.notification.data?.url || "/";
