@@ -3,96 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DARINDA.FX Studio | Master CRM & Cloud Control</title>
+<title>DARINDA.FX Studio | Master Desktop CRM</title>
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ff2a54">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--apple-canvas:#060609;--apple-card:rgba(20,20,26,.75);--apple-card-elevated:rgba(28,28,36,.95);--apple-border:rgba(255,255,255,.08);--apple-border-glow:rgba(255,42,84,.3);--accent:#ff2a54;--accent-glow:rgba(255,42,84,.35);--accent-gradient:linear-gradient(135deg,#ff2a54 0%,#c90022 100%);--accent-green:#30d158;--accent-yellow:#ffd60a;--accent-blue:#0a84ff;--accent-purple:#bf5af2;--text-main:#f5f5f7;--text-muted:#86868b;--input-bg:#14141a;--input-border:rgba(255,255,255,.12);--radius-xl:20px;--radius-lg:14px;--radius-md:10px;--radius-sm:6px;--ease-spring:cubic-bezier(.25,1,.5,1)}
+:root{
+  --apple-canvas:#060609;
+  --apple-card:rgba(18,18,24,.85);
+  --apple-card-elevated:rgba(26,26,34,.95);
+  --apple-border:rgba(255,255,255,.08);
+  --accent:#ff2a54;
+  --accent-glow:rgba(255,42,84,.35);
+  --accent-gradient:linear-gradient(135deg,#ff2a54 0%,#c90022 100%);
+  --accent-green:#30d158;
+  --accent-yellow:#ffd60a;
+  --accent-blue:#0a84ff;
+  --text-main:#f5f5f7;
+  --text-muted:#86868b;
+  --input-bg:#121218;
+  --input-border:rgba(255,255,255,.12);
+  --radius-xl:22px;
+  --radius-lg:16px;
+  --radius-md:12px;
+  --radius-sm:8px;
+  --ease-spring:cubic-bezier(.25,1,.5,1);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-track{background:var(--apple-canvas)}::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:10px}
-body{margin:0;background:var(--apple-canvas);font-family:"Plus Jakarta Sans",-apple-system,sans-serif;color:var(--text-main);min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:var(--apple-canvas)}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+body{margin:0;background:radial-gradient(circle at 10% -10%, rgba(255,42,84,0.12) 0%, transparent 50%), var(--apple-canvas);font-family:"Plus Jakarta Sans",-apple-system,sans-serif;color:var(--text-main);min-height:100vh;overflow-x:hidden}
+
 .app-layout{display:flex;min-height:100vh;width:100%}
-.dfx-sidebar{width:260px;background:rgba(12,12,16,.95);backdrop-filter:blur(35px);border-right:1px solid var(--apple-border);padding:24px 16px;position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;justify-content:space-between;z-index:999}
-.dfx2brand{padding:4px 10px 18px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:14px}
-.dfx2brand b{font-size:20px;font-weight:900}.dfx2brand small{display:block;color:var(--text-muted);font-size:9px;letter-spacing:1.5px;margin-top:4px;font-weight:800}
-.dfx2nav{display:flex;flex-direction:column;gap:4px;flex:1;overflow-y:auto}
-.nav-tab{width:100%;border:0;background:transparent;color:var(--text-muted);text-align:left;padding:10px 14px;border-radius:var(--radius-md);cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;transition:all .2s var(--ease-spring)}
-.nav-tab:hover{background:rgba(255,255,255,.05);color:#fff}
-.nav-tab.on{background:rgba(255,42,84,.15)!important;color:var(--accent)!important;border:1px solid rgba(255,42,84,.25)!important}
-.nav-badge{font-size:10px;padding:2px 7px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--text-muted);font-weight:800}
+.dfx-sidebar{width:270px;background:rgba(10,10,14,.92);backdrop-filter:blur(40px);border-right:1px solid var(--apple-border);padding:24px 16px;position:fixed;top:0;bottom:0;left:0;display:flex;flex-direction:column;justify-content:space-between;z-index:999}
+.dfx2brand{padding:4px 10px 18px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.brand-logo-emblem{width:36px;height:36px;background:#000;border:1.5px solid var(--accent);border-radius:10px;display:grid;place-items:center;box-shadow:0 0 15px var(--accent-glow);flex-shrink:0;}
+.brand-text b{font-size:18px;font-weight:900;letter-spacing:-0.03em;}
+.brand-text small{color:var(--text-muted);font-size:9px;letter-spacing:1.5px;font-weight:800;display:block;}
+
+.dfx2nav{display:flex;flex-direction:column;gap:4px;flex:1;overflow-y:auto;}
+.nav-tab{width:100%;border:0;background:transparent;color:var(--text-muted);text-align:left;padding:11px 14px;border-radius:var(--radius-md);cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:space-between;transition:all .2s var(--ease-spring)}
+.nav-tab:hover{background:rgba(255,255,255,.05);color:#fff;}
+.nav-tab.on{background:rgba(255,42,84,.15)!important;color:var(--accent)!important;border:1px solid rgba(255,42,84,.3)!important;}
+.nav-badge{font-size:10px;padding:2px 8px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--text-muted);font-weight:800}
 .nav-tab.on .nav-badge{background:var(--accent);color:#fff}
-.dfx-main-wrapper{margin-left:260px;width:calc(100% - 260px);min-height:100vh;padding:34px 40px}
+
+.dfx-main-wrapper{margin-left:270px;width:calc(100% - 270px);min-height:100vh;padding:30px 40px}
 .dfx-tab-content{display:none}.dfx-tab-content.active{display:block;animation:appleViewFade .3s var(--ease-spring) forwards}
 @keyframes appleViewFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.dfx2head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-.dfx2head h1{font-size:28px;font-weight:900}.dfx2head p{font-size:13px;color:var(--text-muted);margin-top:4px}
+
+.dfx2head{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.dfx2head h1{font-size:28px;font-weight:900;letter-spacing:-0.03em;}.dfx2head p{font-size:13px;color:var(--text-muted);margin-top:4px}
+
 .dfx2cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.dfx2card{background:var(--apple-card);border:1px solid var(--apple-border);border-radius:var(--radius-lg);padding:22px;backdrop-filter:blur(25px)}
-.dfx2label{font-size:10px;font-weight:800;color:var(--text-muted);text-transform:uppercase}
-.dfx2value{font-size:28px;font-weight:900;margin-top:8px}
-.dfx2section{background:var(--apple-card);border:1px solid var(--apple-border);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px}
+.dfx2card{background:var(--apple-card);border:1px solid var(--apple-border);border-radius:var(--radius-lg);padding:22px;backdrop-filter:blur(30px);box-shadow:0 15px 35px rgba(0,0,0,0.4);}
+.dfx2label{font-size:10px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;}
+.dfx2value{font-size:30px;font-weight:900;margin-top:8px;}
+
+.dfx2section{background:var(--apple-card);border:1px solid var(--apple-border);border-radius:var(--radius-lg);padding:24px;margin-bottom:24px;backdrop-filter:blur(30px);width:100%;min-width:0;}
 .dfx2secthead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-button{font-family:inherit;border:0;border-radius:var(--radius-md);padding:11px 16px;font-weight:700;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+
+button{font-family:inherit;border:0;border-radius:var(--radius-md);padding:11px 16px;font-weight:700;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;}
 .dfx2btn{background:rgba(255,255,255,.06);border:1px solid var(--apple-border);color:var(--text-main)}
-.dfx2primary{background:var(--accent-gradient);color:#fff;border:none}
+.dfx2primary{background:var(--accent-gradient);color:#fff;border:none;box-shadow:0 8px 25px var(--accent-glow);}
+
 .dfx-btn-sm{padding:6px 12px;font-size:11px;font-weight:700;border-radius:8px;background:rgba(255,255,255,.06);border:1px solid var(--apple-border);color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:4px;cursor:pointer;flex-shrink:0;}
 .dfx-btn-paid{background:rgba(48,209,88,.15);color:var(--accent-green);border-color:rgba(48,209,88,.3)}
 .dfx-btn-play{background:rgba(255,42,84,.15);color:var(--accent);border-color:rgba(255,42,84,.3)}
 .dfx-btn-blue{background:rgba(10,132,255,.15);color:var(--accent-blue);border-color:rgba(10,132,255,.3)}
 .dfx-btn-del{background:rgba(255,42,84,.12);color:var(--accent);border-color:rgba(255,42,84,.25)}
-input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--input-border);border-radius:var(--radius-md);background:var(--input-bg);color:var(--text-main);font-family:inherit;font-size:14px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
-label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;margin:12px 0 6px}
+
+input,select{width:100%;padding:12px 14px;border:1px solid var(--input-border);border-radius:var(--radius-md);background:var(--input-bg);color:var(--text-main);font-family:inherit;font-size:13px;outline:none;}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-transform:uppercase;margin:12px 0 6px;}
+
 .dfx2table{width:100%;border-collapse:collapse;font-size:12px}
-.dfx2table th{color:var(--text-muted);text-align:left;font-weight:800;border-bottom:1px solid var(--apple-border);padding:12px 10px;font-size:10px;text-transform:uppercase}
+.dfx2table th{color:var(--text-muted);text-align:left;font-weight:800;border-bottom:1px solid var(--apple-border);padding:12px 10px;font-size:10px;text-transform:uppercase;}
 .dfx2table td{border-bottom:1px solid rgba(255,255,255,.04);padding:14px 10px;vertical-align:middle}
 .dfx2pill{display:inline-block;padding:4px 9px;border-radius:999px;font-size:9px;font-weight:800;text-transform:uppercase}
 .dfx2pill.paid,.dfx2pill.active{background:rgba(48,209,88,.15);color:var(--accent-green)}
 .dfx2pill.pending,.dfx2pill.revoked{background:rgba(255,42,84,.15);color:var(--accent)}
 
-/* GLASS FILE PICKER */
-.glass-file-uploader{position:relative;width:100%;min-width:0;border:1.5px dashed rgba(255,42,84,.35);background:rgba(255,42,84,.04);border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .25s var(--ease-spring);overflow:hidden}
-.glass-file-uploader:hover,.glass-file-uploader.selected{border-color:var(--accent);background:rgba(255,42,84,.1);box-shadow:0 0 20px rgba(255,42,84,.2)}
-.glass-file-uploader input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.file-upload-badge{width:34px;height:34px;border-radius:9px;background:rgba(255,42,84,.15);border:1px solid rgba(255,42,84,.3);display:grid;place-items:center;font-size:15px;color:var(--accent);flex-shrink:0}
-.file-upload-meta{min-width:0;flex:1;overflow:hidden}
-.file-main-name{font-size:11px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
-.file-sub-info{font-size:8px;color:var(--text-muted);margin-top:2px;font-weight:600}
+/* PUBLISHER GRID */
+.publish-grid-row1 { display: grid; grid-template-columns: minmax(180px, 240px) minmax(0, 1fr) minmax(100px, 140px); gap: 16px; margin-bottom: 16px; width: 100%; }
+.publish-grid-row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; margin-bottom: 16px; width: 100%; }
+.publish-grid-row1 > div, .publish-grid-row2 > div { min-width: 0 !important; width: 100%; overflow: hidden; }
 
-/* RAW GRID */
-.raw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:8px}
-.raw-card{background:rgba(0,0,0,.35);border:1px solid var(--apple-border);border-radius:16px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
-.raw-card-head{display:flex;justify-content:space-between;align-items:flex-start}
-.raw-icon-box{width:40px;height:40px;border-radius:10px;background:rgba(255,42,84,.15);border:1px solid rgba(255,42,84,.3);display:grid;place-items:center;font-size:18px;color:var(--accent)}
-.raw-file-title{font-size:13px;font-weight:800;color:#fff;word-break:break-all;margin-bottom:2px}
-.raw-meta-badge{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:800;padding:3px 7px;border-radius:6px;background:rgba(255,255,255,.08);color:var(--text-muted)}
-.raw-notes-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:10px;font-size:11px;color:#ccc;line-height:1.4}
-.raw-actions-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;padding-top:8px;border-top:1px solid rgba(255,255,255,.06)}
+.glass-file-uploader{position:relative;width:100%;min-width:0 !important;max-width:100%;border:1.5px dashed rgba(255,42,84,.4);background:rgba(255,42,84,.04);border-radius:14px;padding:12px;display:flex;align-items:center;gap:10px;cursor:pointer;overflow:hidden;box-sizing:border-box;}
+.glass-file-uploader:hover,.glass-file-uploader.selected{border-color:var(--accent);background:rgba(255,42,84,.12);}
+.glass-file-uploader input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:5;}
+.file-upload-badge{width:34px;height:34px;border-radius:9px;background:rgba(255,42,84,.15);border:1px solid rgba(255,42,84,.3);display:grid;place-items:center;font-size:15px;color:var(--accent);flex-shrink:0;}
+.file-upload-meta{min-width:0 !important;flex:1;overflow:hidden;}
+.file-main-name{font-size:11px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;width:100%;}
+.file-sub-info{font-size:8px;color:var(--text-muted);margin-top:2px;}
 
-/* CHAT */
-.admin-chat-grid{display:grid;grid-template-columns:280px 1fr;gap:16px;height:calc(100vh - 180px);min-height:500px}
-.admin-chat-users{background:rgba(0,0,0,.3);border:1px solid var(--apple-border);border-radius:var(--radius-md);padding:10px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
-.chat-user-item{padding:12px;border-radius:var(--radius-sm);cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between;color:var(--text-muted)}
-.chat-user-item.active{background:rgba(255,42,84,.18);color:var(--accent)}
-.admin-chat-box{background:rgba(0,0,0,.3);border:1px solid var(--apple-border);border-radius:var(--radius-md);display:flex;flex-direction:column;padding:16px;overflow:hidden;}
-.admin-chat-stream{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:12px;padding-right:8px;}
-.admin-bubble{max-width:75%;padding:10px 14px;font-size:12px;border-radius:16px;word-break:break-word}
-.admin-bubble.studio{background:var(--accent-gradient);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
-.admin-bubble.client{background:rgba(255,255,255,.08);color:#fff;align-self:flex-start;border-bottom-left-radius:4px}
+/* 🌟 RAW FOOTAGE GRID */
+.raw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;width:100%;}
+.raw-card{background:rgba(0,0,0,.45);border:1px solid var(--apple-border);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:12px;overflow:hidden;}
+.raw-card-head{display:flex;justify-content:space-between;align-items:center;width:100%;}
+.raw-icon-box{width:38px;height:38px;border-radius:10px;background:rgba(255,42,84,.15);border:1px solid rgba(255,42,84,.3);display:grid;place-items:center;font-size:18px;color:var(--accent);flex-shrink:0;}
+.raw-file-title{font-size:12px;font-weight:800;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;display:block;margin:6px 0;}
+.raw-meta-badge{font-size:9px;font-weight:800;padding:3px 7px;border-radius:6px;background:rgba(255,255,255,.08);color:var(--text-muted);}
+.raw-notes-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:10px;font-size:11px;color:#ccc;line-height:1.4;word-break:break-word;}
+.raw-actions-bar{display:flex;gap:8px;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid rgba(255,255,255,.06);margin-top:auto;}
 
+/* INVOICE MAKER */
 .maker-container{display:grid;grid-template-columns:380px 1fr;gap:24px;align-items:start}
-.paper{background:#fff;color:#111;padding:44px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.paper{background:#fff;color:#111;padding:40px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .paper *{color:#111}.wordmark{font-size:24px;font-weight:900}.wordmark span{color:var(--accent)}
 .service-row{border:1px solid #282832;border-radius:10px;padding:10px;margin-bottom:8px;background:#141418}
 .service-head{display:grid;grid-template-columns:1fr 30px;gap:8px;align-items:center}
 .service-grid{display:grid;grid-template-columns:1.4fr .6fr .8fr;gap:8px;margin-top:8px}
 
+/* CHAT */
+.admin-chat-grid{display:grid;grid-template-columns:280px 1fr;gap:16px;height:calc(100vh - 180px);min-height:500px}
+.admin-chat-users{background:rgba(0,0,0,.3);border:1px solid var(--apple-border);border-radius:var(--radius-md);padding:10px;overflow-y:auto;display:flex;flex-direction:column;gap:6px}
+.chat-user-item{padding:12px;border-radius:var(--radius-sm);cursor:pointer;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:space-between;color:var(--text-muted);}
+.chat-user-item.active{background:rgba(255,42,84,.18);color:var(--accent);border:1px solid rgba(255,42,84,0.3);}
+.admin-chat-box{background:rgba(0,0,0,.3);border:1px solid var(--apple-border);border-radius:var(--radius-md);display:flex;flex-direction:column;padding:16px;overflow:hidden;}
+.admin-chat-stream{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:12px;padding-right:8px;}
+.admin-bubble-wrapper{display:flex;flex-direction:column;max-width:75%;position:relative;}
+.admin-bubble-wrapper.studio{align-self:flex-end;align-items:flex-end;}
+.admin-bubble-wrapper.client{align-self:flex-start;align-items:flex-start;}
+.admin-bubble{padding:10px 14px;font-size:12px;border-radius:16px;word-break:break-word;}
+.admin-bubble.studio{background:var(--accent-gradient);color:#fff;border-bottom-right-radius:4px}
+.admin-bubble.client{background:rgba(255,255,255,.08);color:#fff;border-bottom-left-radius:4px}
+.chat-action-btn-row{display:flex;gap:6px;margin-top:2px;}
+.chat-mini-action{background:none;border:none;color:#aaa;font-size:10px;cursor:pointer;padding:2px 4px;}
+.chat-mini-action:hover{color:var(--accent);}
+
 /* MODALS */
-.dfx-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(25px);display:none;align-items:center;justify-content:center;z-index:9999}
+.dfx-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(25px);display:none;align-items:center;justify-content:center;z-index:9999}
 .dfx-modal-overlay.active{display:flex}
-.dfx-modal{background:var(--apple-card-elevated);border:1px solid var(--apple-border);border-radius:var(--radius-xl);width:min(580px,94vw);padding:28px;box-shadow:0 25px 60px rgba(0,0,0,.8)}
-.dfx-video-modal{width:min(820px,96vw);background:#0b0c10;border-radius:24px;border:1.5px solid var(--apple-border);overflow:hidden;padding:24px;box-shadow:0 35px 90px rgba(0,0,0,.95)}
+.dfx-modal{background:var(--apple-card-elevated);border:1px solid var(--apple-border);border-radius:var(--radius-xl);width:min(580px,94vw);padding:28px;}
+.dfx-video-modal{width:min(820px,96vw);background:#0b0c10;border-radius:24px;border:1.5px solid var(--apple-border);overflow:hidden;padding:24px;}
 .dfx-toast-container{position:fixed;bottom:30px;right:30px;display:flex;flex-direction:column;gap:10px;z-index:99999;pointer-events:none}
 .dfx-toast{background:var(--apple-card-elevated);border:1px solid var(--apple-border);padding:14px 20px;border-radius:12px;color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;gap:8px;}
 .dfx-toast.success{border-left:4px solid var(--accent-green)}.dfx-toast.error{border-left:4px solid var(--accent)}
@@ -102,22 +150,32 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
 <div class="app-layout">
   <aside class="dfx-sidebar">
     <div>
-      <div class="dfx2brand"><b>DARINDA<span style="color:var(--accent)">.FX</span></b><small>PRO CLOUD CRM v2.0</small></div>
+      <div class="dfx2brand">
+        <div class="brand-logo-emblem">
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none"><path d="M20 20 L60 20 Q85 20 85 50 Q85 80 60 80 L20 80 Z" fill="#fff" /><path d="M45 20 L80 20 Q95 20 95 50 Q95 80 80 80 L45 80 Z" fill="#ff2a54" opacity="0.85" /><text x="28" y="70" font-family="Plus Jakarta Sans, sans-serif" font-weight="900" font-size="52" fill="#111">DF</text></svg>
+        </div>
+        <div class="brand-text">
+          <b>DARINDA<span style="color:var(--accent)">.FX</span></b>
+          <small>STUDIO MASTER CRM</small>
+        </div>
+      </div>
       <nav class="dfx2nav">
         <button type="button" class="nav-tab on" data-tab="dashboard" onclick="dfxTab('dashboard')"><span>⌂ &nbsp; Dashboard</span></button>
-        <button type="button" class="nav-tab" data-tab="invoices" onclick="dfxTab('invoices')"><span>▣ &nbsp; Invoices</span><span id="badgeInvoices" class="nav-badge">0</span></button>
-        <button type="button" class="nav-tab" data-tab="clients" onclick="dfxTab('clients')"><span>◎ &nbsp; Clients</span><span id="badgeClients" class="nav-badge">0</span></button>
         <button type="button" class="nav-tab" data-tab="deliverables" onclick="dfxTab('deliverables')"><span>🎬 &nbsp; Deliverables</span><span id="badgeDeliverables" class="nav-badge">0</span></button>
         <button type="button" class="nav-tab" data-tab="utr" onclick="dfxTab('utr')"><span>💳 &nbsp; UTR Queue</span><span id="badgeUtr" class="nav-badge">0</span></button>
         <button type="button" class="nav-tab" data-tab="raw" onclick="dfxTab('raw')"><span>📁 &nbsp; Raw Footage</span><span id="badgeRaw" class="nav-badge">0</span></button>
-        <button type="button" class="nav-tab" data-tab="chat" onclick="dfxTab('chat')"><span>💬 &nbsp; Live Chat</span></button>
-        <button type="button" class="nav-tab" data-tab="kry" onclick="dfxTab('kry')"><span>🔑 &nbsp; License Keys</span><span id="badgeKry" class="nav-badge">0</span></button>
-        <button type="button" class="nav-tab" data-tab="feedback" onclick="dfxTab('feedback')"><span>⭐ &nbsp; Reviews</span><span id="badgeFeedback" class="nav-badge">0</span></button>
+        <button type="button" class="nav-tab" data-tab="chat" onclick="dfxTab('chat')"><span>💬 &nbsp; Live Client Chat</span></button>
+        <button type="button" class="nav-tab" data-tab="clients" onclick="dfxTab('clients')"><span>◎ &nbsp; Clients Directory</span><span id="badgeClients" class="nav-badge">0</span></button>
+        <button type="button" class="nav-tab" data-tab="invoices" onclick="dfxTab('invoices')"><span>▣ &nbsp; Invoices Ledger</span><span id="badgeInvoices" class="nav-badge">0</span></button>
+        <button type="button" class="nav-tab" data-tab="kry" onclick="dfxTab('kry')"><span>🔑 &nbsp; License Tokens</span><span id="badgeKry" class="nav-badge">0</span></button>
+        <button type="button" class="nav-tab" data-tab="feedback" onclick="dfxTab('feedback')"><span>⭐ &nbsp; Client Reviews</span><span id="badgeFeedback" class="nav-badge">0</span></button>
       </nav>
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)">
-      <button type="button" class="dfx2btn dfx2primary" onclick="dfxTab('maker')" style="width:100%">＋ Invoice Maker</button>
-      <button type="button" class="dfx2btn" onclick="window.open('/', '_blank')" style="width:100%">🌐 Client View ↗</button>
+      <!-- 🌟 RESTORED INVOICE GENERATOR BUTTON -->
+      <button type="button" class="dfx2btn dfx2primary" onclick="dfxTab('maker')" style="width:100%;">＋ Invoice Maker</button>
+      <button type="button" class="dfx2btn" id="installAdminPwaBtn" onclick="installAdminApp()" style="width:100%;">💻 Install PC App</button>
+      <button type="button" class="dfx2btn" onclick="window.open('/', '_blank')" style="width:100%">🌐 Open Client Portal ↗</button>
     </div>
   </aside>
 
@@ -125,8 +183,11 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
     <!-- DASHBOARD -->
     <div id="tab-dashboard" class="dfx-tab-content active">
       <div class="dfx2head">
-        <div><h1>Studio Cloud Overview</h1><p>Real-time telemetry and workspace state.</p></div>
-        <button type="button" class="dfx2btn dfx2primary" onclick="dfxTab('deliverables')">🚀 Publish Delivery</button>
+        <div><h1>Studio Cloud Control</h1><p>Real-time telemetry, orders & automated notifications engine.</p></div>
+        <div style="display:flex;gap:10px;">
+          <button type="button" class="dfx2btn" onclick="requestNotificationPermission()">🔔 Enable PC Alerts</button>
+          <button type="button" class="dfx2btn dfx2primary" onclick="dfxTab('deliverables')">🚀 Publish Delivery</button>
+        </div>
       </div>
       <div class="dfx2cards">
         <div class="dfx2card"><div class="dfx2label">TOTAL REVENUE</div><div id="wxRevenue" class="dfx2value">₹0</div></div>
@@ -136,34 +197,55 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
       </div>
       
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-          <div class="dfx2section" style="margin-bottom:0;">
-              <div class="dfx2secthead"><b>Recent Deliverables</b></div>
-              <div id="dashDelivTable"></div>
-          </div>
-          <div class="dfx2section" style="margin-bottom:0;">
-              <div class="dfx2secthead"><b>Recent Invoices</b></div>
-              <div id="dashInvTable"></div>
-          </div>
+          <div class="dfx2section" style="margin-bottom:0;"><div class="dfx2secthead"><b>Recent Deliverables</b></div><div id="dashDelivTable"></div></div>
+          <div class="dfx2section" style="margin-bottom:0;"><div class="dfx2secthead"><b>Recent Invoices</b></div><div id="dashInvTable"></div></div>
       </div>
     </div>
 
-    <!-- INVOICES -->
-    <div id="tab-invoices" class="dfx-tab-content">
-      <div class="dfx2head"><div><h1>Invoices Ledger</h1><p>Client billing records.</p></div><button type="button" class="dfx2btn dfx2primary" onclick="dfxTab('maker')">＋ New Invoice</button></div>
-      <div style="display:flex;gap:12px;margin-bottom:16px;">
-        <input id="dfxhSearch" placeholder="🔍 Search invoice no, client..." style="flex:1;" oninput="dfxhRender()">
-        <select id="dfxhFilter" style="width:180px;" onchange="dfxhRender()">
-          <option value="ALL">All Status</option>
-          <option value="PAID">Paid</option>
-          <option value="SENT">Sent / Pending</option>
-        </select>
-      </div>
-      <section class="dfx2section"><div id="dfxhTable">Loading...</div></section>
+    <!-- DELIVERABLES -->
+    <div id="tab-deliverables" class="dfx-tab-content">
+      <div class="dfx2head"><div><h1>Deliverables & Lock Engine</h1></div></div>
+      <section class="dfx2section">
+        <div class="dfx2secthead"><b>🚀 Publish New Render to Client Portal</b></div>
+        <form id="adminDeliverableForm" onsubmit="event.preventDefault(); publishDeliverableDirect();">
+          <div class="publish-grid-row1">
+            <div><label>Target Client *</label><select id="delivTargetClient" class="global-client-select" required></select></div>
+            <div><label>Video Title *</label><input id="delivTitle" placeholder="e.g. Cinematic Gym Reel #01" required></div>
+            <div><label>Balance Price (₹) *</label><input id="delivPrice" type="number" value="800" required></div>
+          </div>
+          
+          <div class="publish-grid-row2">
+            <div>
+              <label>1. Draft Watermark Preview Video</label>
+              <div class="glass-file-uploader" id="draftUploaderBox">
+                <input type="file" id="delivDraftFile" accept="video/*,.mp4,.mov,.mkv" onchange="handleFileSelected(this, 'draftNameText', 'draftUploaderBox')">
+                <div class="file-upload-badge">🎬</div>
+                <div class="file-upload-meta"><span class="file-main-name" id="draftNameText">Select Draft Preview File</span><div class="file-sub-info">MP4, MOV up to 2GB</div></div>
+              </div>
+              <input id="delivWatermarkLink" placeholder="Or paste Cloud Link..." style="margin-top:8px;font-size:12px;">
+            </div>
+
+            <div>
+              <label>2. Clean 4K Master Video (Unlocked after Payment)</label>
+              <div class="glass-file-uploader" id="masterUploaderBox">
+                <input type="file" id="delivMasterFile" accept="video/*,.mp4,.mov,.mkv,.zip,.rar" onchange="handleFileSelected(this, 'masterNameText', 'masterUploaderBox')">
+                <div class="file-upload-badge" style="background:rgba(48,209,88,.15);color:var(--accent-green);border-color:rgba(48,209,88,.3)">💎</div>
+                <div class="file-upload-meta"><span class="file-main-name" id="masterNameText">Select 4K Master File</span><div class="file-sub-info">Clean 4K Export Render</div></div>
+              </div>
+              <input id="delivMasterLink" placeholder="Or paste 4K Cloud Link..." style="margin-top:8px;font-size:12px;">
+            </div>
+          </div>
+
+          <button type="submit" id="delivPublishBtn" class="dfx2btn dfx2primary" style="padding:14px 26px;font-size:13px;width:auto;margin-top:4px;">🚀 Upload & Publish to Client Portal</button>
+        </form>
+      </section>
+
+      <section class="dfx2section"><div id="delivTableContainer">Loading...</div></section>
     </div>
 
-    <!-- INVOICE MAKER -->
+    <!-- 🌟 RESTORED INVOICE GENERATOR -->
     <div id="tab-maker" class="dfx-tab-content">
-      <div class="dfx2head"><div><h1>Invoice Generator</h1></div><button type="button" class="dfx2btn" onclick="dfxTab('invoices')">← Return</button></div>
+      <div class="dfx2head"><div><h1>Invoice Generator</h1></div><button type="button" class="dfx2btn" onclick="dfxTab('invoices')">← Return to Ledger</button></div>
       <div class="maker-container">
         <div style="background:var(--apple-card);border:1px solid var(--apple-border);border-radius:var(--radius-lg);padding:24px">
           <label>Client Name</label><input id="makerClient" placeholder="e.g. Rahul Sharma" oninput="generateInvoicePreview()">
@@ -200,81 +282,16 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
       </div>
     </div>
 
-    <!-- CLIENTS -->
-    <div id="tab-clients" class="dfx-tab-content">
-      <div class="dfx2head"><div><h1>Clients Directory</h1></div><button type="button" class="dfx2btn dfx2primary" onclick="document.getElementById('cliModalOverlay').classList.add('active')">＋ Add Client</button></div>
-      <section class="dfx2section"><div id="cliTableContainer">Loading...</div></section>
-    </div>
-
-    <!-- DELIVERABLES & PUBLISHER -->
-    <div id="tab-deliverables" class="dfx-tab-content">
-      <div class="dfx2head"><div><h1>Deliverables & Lock Engine</h1></div></div>
-      <section class="dfx2section">
-        <div class="dfx2secthead"><b>🚀 Publish New Render to Client Portal</b></div>
-        
-        <form id="adminDeliverableForm" onsubmit="event.preventDefault(); publishDeliverableDirect();">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
-            <div style="min-width:0;"><label>Target Client *</label><select id="delivTargetClient" class="global-client-select" required></select></div>
-            <div style="min-width:0;"><label>Video Title *</label><input id="delivTitle" placeholder="e.g. Cinematic Gym Reel #01" required></div>
-          </div>
-          
-          <div style="display:grid;grid-template-columns:160px 1fr 1fr;gap:14px;margin-bottom:14px">
-            <div style="min-width:0;">
-              <label>Balance Price (₹) *</label>
-              <input id="delivPrice" type="number" value="800" required>
-            </div>
-            
-            <div style="min-width:0;">
-              <label>Draft Watermark Video</label>
-              <div class="glass-file-uploader" id="draftUploaderBox">
-                <input type="file" id="delivDraftFile" accept="video/*,.mp4,.mov,.mkv" onchange="handleFileSelected(this, 'draftNameText', 'draftUploaderBox')">
-                <div class="file-upload-badge">🎬</div>
-                <div class="file-upload-meta">
-                  <span class="file-main-name" id="draftNameText">Select Draft File</span>
-                  <div class="file-sub-info">MP4, MOV up to 2GB</div>
-                </div>
-              </div>
-              <input id="delivWatermarkLink" placeholder="Or paste Cloud Link..." style="margin-top:8px;font-size:12px;">
-            </div>
-
-            <div style="min-width:0;">
-              <label>Clean 4K Master Video</label>
-              <div class="glass-file-uploader" id="masterUploaderBox">
-                <input type="file" id="delivMasterFile" accept="video/*,.mp4,.mov,.mkv,.zip,.rar" onchange="handleFileSelected(this, 'masterNameText', 'masterUploaderBox')">
-                <div class="file-upload-badge" style="background:rgba(48,209,88,.15);color:var(--accent-green);border-color:rgba(48,209,88,.3)">💎</div>
-                <div class="file-upload-meta">
-                  <span class="file-main-name" id="masterNameText">Select 4K Master File</span>
-                  <div class="file-sub-info">Clean Master Render</div>
-                </div>
-              </div>
-              <input id="delivMasterLink" placeholder="Or paste 4K Cloud Link..." style="margin-top:8px;font-size:12px;">
-            </div>
-          </div>
-          
-          <button type="submit" id="delivPublishBtn" class="dfx2btn dfx2primary" style="padding:14px 26px;font-size:13px;">🚀 Upload & Publish to Client Portal</button>
-        </form>
-      </section>
-
-      <section class="dfx2section"><div class="dfx2secthead"><b>Active Deliverables Registry</b></div><div id="delivTableContainer">Loading...</div></section>
-    </div>
-
     <!-- UTR QUEUE -->
     <div id="tab-utr" class="dfx-tab-content">
       <div class="dfx2head"><div><h1>Live UTR Verification Queue</h1></div></div>
       <section class="dfx2section"><div id="utrTableContainer">Loading...</div></section>
     </div>
 
-    <!-- RAW FOOTAGE STREAM -->
+    <!-- 🌟 CLEAN RAW FOOTAGE GRID STREAM -->
     <div id="tab-raw" class="dfx-tab-content">
-      <div class="dfx2head">
-        <div>
-          <h1>Raw Footage Stream</h1>
-          <p>Incoming client media assets, video stream previews & cloud links.</p>
-        </div>
-      </div>
-      <section class="dfx2section">
-        <div id="rawAssetInspector">Loading...</div>
-      </section>
+      <div class="dfx2head"><div><h1>Raw Footage Stream</h1><p>Incoming client media assets & instant preview player.</p></div></div>
+      <section class="dfx2section"><div id="rawAssetInspector">Loading...</div></section>
     </div>
 
     <!-- CHAT -->
@@ -295,7 +312,23 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
       </section>
     </div>
 
-    <!-- LICENSE KEYS (KRY) -->
+    <!-- CLIENTS -->
+    <div id="tab-clients" class="dfx-tab-content">
+      <div class="dfx2head"><div><h1>Clients Directory</h1></div><button type="button" class="dfx2btn dfx2primary" onclick="document.getElementById('cliModalOverlay').classList.add('active')">＋ Add Client</button></div>
+      <section class="dfx2section"><div id="cliTableContainer">Loading...</div></section>
+    </div>
+
+    <!-- INVOICES -->
+    <div id="tab-invoices" class="dfx-tab-content">
+      <div class="dfx2head"><div><h1>Invoices Ledger</h1></div><button type="button" class="dfx2btn dfx2primary" onclick="dfxTab('maker')">＋ New Invoice</button></div>
+      <div style="display:flex;gap:12px;margin-bottom:16px;">
+        <input id="dfxhSearch" placeholder="🔍 Search invoice..." style="flex:1;" oninput="dfxhRender()">
+        <select id="dfxhFilter" style="width:180px;" onchange="dfxhRender()"><option value="ALL">All Status</option><option value="PAID">Paid</option><option value="SENT">Sent / Pending</option></select>
+      </div>
+      <section class="dfx2section"><div id="dfxhTable">Loading...</div></section>
+    </div>
+
+    <!-- LICENSE KEYS -->
     <div id="tab-kry" class="dfx-tab-content">
       <div class="dfx2head"><div><h1>License Key Manager</h1></div></div>
       <div style="display:grid;grid-template-columns:380px 1fr;gap:20px;">
@@ -306,7 +339,7 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
           <select id="kryTierSelect"><option value="Pro 4K Render Pass">🎬 Pro 4K Render Pass</option><option value="VIP Preset Access">🔥 VIP Preset Access</option></select>
           <button type="button" class="dfx2btn dfx2primary" style="margin-top:16px;width:100%" onclick="dfxGenerateKryKey()">⚡ Generate Token</button>
         </section>
-        <section class="dfx2section"><div class="dfx2secthead"><b>📋 Active Registry</b></div><div id="kryTableContainer">Loading...</div></section>
+        <section class="dfx2section"><div id="kryTableContainer">Loading...</div></section>
       </div>
     </div>
 
@@ -332,24 +365,19 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
   </div>
 </div>
 
-<!-- 🌟 FIXED VIDEO MODAL WITH PERMANENT CLOSE / BACK BUTTON -->
-<div id="rawVideoModal" class="dfx-modal-overlay" onclick="handleOverlayBackdropClick(event)">
+<!-- RAW VIDEO MODAL -->
+<div id="rawVideoModal" class="dfx-modal-overlay">
   <div class="dfx-video-modal">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--apple-border)">
-      <div style="min-width:0;flex:1;margin-right:14px;">
-        <h3 id="modalVideoTitle" style="font-size:15px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Raw Footage Player</h3>
-        <p id="modalVideoMeta" style="font-size:11px;color:var(--text-muted);margin-top:2px;">Client Asset Stream</p>
-      </div>
-      <button type="button" class="dfx-btn-sm dfx-btn-del" onclick="closeRawVideoModal()" style="padding:8px 16px;font-size:12px;font-weight:800;border-radius:10px;flex-shrink:0;">✕ Back / Close</button>
+      <div><h3 id="modalVideoTitle" style="font-size:15px;font-weight:900;">Raw Footage Player</h3><p id="modalVideoMeta" style="font-size:11px;color:var(--text-muted);">Client Asset</p></div>
+      <button type="button" class="dfx-btn-sm dfx-btn-del" onclick="closeRawVideoModal()">✕ Close</button>
     </div>
-    
-    <div style="position:relative;width:100%;height:380px;background:#000;border-radius:16px;overflow:hidden;margin-bottom:14px;border:1px solid var(--apple-border)">
-      <video id="adminRawPlayer" controls style="width:100%;height:100%;object-fit:contain;" playsinline></video>
+    <div style="position:relative;width:100%;height:380px;background:#000;border-radius:16px;overflow:hidden;margin-bottom:14px;">
+      <video id="adminRawPlayer" controls style="width:100%;height:100%;object-fit:contain;"></video>
     </div>
-
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
-      <div id="modalVideoNote" style="font-size:11px;color:#ccc;max-width:65%;overflow:hidden;text-overflow:ellipsis;"></div>
-      <a id="modalDownloadBtn" href="" download class="dfx-btn-sm dfx-btn-paid" style="padding:10px 18px;font-size:12px;flex-shrink:0;">⬇ Download Full Original</a>
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div id="modalVideoNote" style="font-size:11px;color:#ccc;"></div>
+      <a id="modalDownloadBtn" href="" download class="dfx-btn-sm dfx-btn-paid">⬇ Download Original</a>
     </div>
   </div>
 </div>
@@ -359,16 +387,62 @@ label{display:block;font-size:11px;font-weight:800;color:var(--text-muted);text-
 <script>
 let dbState = { clients:[], invoices:[], deliverables:[], utr:[], raw:[], feedback:[], kry:[], chats:{} };
 let activeChatClient = null, chatInterval = null;
+let lastCounts = { raw: null, utr: null, chats: {} };
 
 const escapeHtml = s => String(s ?? "").replace(/[&<>"']/g, m => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[m]));
 const money = n => "₹" + Number(n || 0).toLocaleString("en-IN");
 const today = () => new Date().toISOString().slice(0, 10);
 
+function playAdminChime() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(783.99, ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+    osc.start(); osc.stop(ctx.currentTime + 0.25);
+  } catch(e) {}
+}
+
+function requestNotificationPermission() {
+  if ("Notification" in window) {
+    Notification.requestPermission().then(p => {
+      if (p === "granted") dfxToast("Desktop notifications enabled! 🔔");
+      else dfxToast("Notifications blocked in browser settings", true);
+    });
+  }
+}
+
+function triggerDesktopNotification(title, body) {
+  playAdminChime();
+  if ("Notification" in window && Notification.permission === "granted") {
+    try { new Notification(title, { body, icon: "/logo.jpg" }); } catch(e) {}
+  }
+}
+
+let deferredAdminPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); deferredAdminPrompt = e;
+});
+
+function installAdminApp() {
+  if (deferredAdminPrompt) {
+    deferredAdminPrompt.prompt();
+    deferredAdminPrompt.userChoice.then(() => { deferredAdminPrompt = null; });
+  } else {
+    dfxToast("Click 'Install DARINDA.FX' icon in Chrome URL bar!", false);
+  }
+}
+
 function dfxToast(msg, isError) {
   const c = document.getElementById("toastContainer"), t = document.createElement("div");
   t.className = "dfx-toast " + (isError ? "error" : "success");
   t.innerHTML = (isError ? "⚠️ " : "✅ ") + escapeHtml(msg);
-  c.appendChild(t); setTimeout(() => t.remove(), 3000);
+  c.appendChild(t); setTimeout(() => t.remove(), 3200);
 }
 
 async function api(url, opts = {}) {
@@ -378,19 +452,38 @@ async function api(url, opts = {}) {
 
 async function dfxFullSync() {
   try {
-    dbState = await api("/api/admin/sync");
-    renderDashboard();
-    renderClients();
-    renderDeliverables();
-    renderUtrQueue();
-    renderRawInspector();
-    renderKry();
-    renderReviews();
-    dfxhRender();
+    const freshDb = await api("/api/admin/sync");
+    
+    if (lastCounts.raw !== null) {
+      if ((freshDb.raw || []).length > lastCounts.raw) {
+        const latest = freshDb.raw[0];
+        triggerDesktopNotification("🎬 New Raw Footage!", `${latest.client} uploaded ${latest.filename || 'files'}`);
+      }
+      if ((freshDb.utr || []).length > lastCounts.utr) {
+        const latestUtr = freshDb.utr[0];
+        triggerDesktopNotification("💳 UTR Payment Submitted!", `${latestUtr.client} submitted UTR proof`);
+      }
+      Object.keys(freshDb.chats || {}).forEach(cName => {
+        const oldLen = (lastCounts.chats[cName] || 0);
+        const newLen = (freshDb.chats[cName] || []).length;
+        if (newLen > oldLen) {
+          const lastMsg = freshDb.chats[cName][newLen - 1];
+          if (lastMsg.sender === 'client') {
+            triggerDesktopNotification(`💬 Message from ${cName}`, lastMsg.text);
+          }
+        }
+      });
+    }
+
+    lastCounts.raw = (freshDb.raw || []).length;
+    lastCounts.utr = (freshDb.utr || []).length;
+    Object.keys(freshDb.chats || {}).forEach(k => { lastCounts.chats[k] = (freshDb.chats[k] || []).length; });
+
+    dbState = freshDb;
+    renderDashboard(); renderClients(); renderDeliverables();
+    renderUtrQueue(); renderRawInspector(); renderKry(); renderReviews(); dfxhRender();
     if(activeChatClient) renderChatStream();
-  } catch (e) {
-    dfxToast("Failed to connect to backend", true);
-  }
+  } catch (e) {}
 }
 
 function dfxTab(tabId) {
@@ -399,10 +492,7 @@ function dfxTab(tabId) {
   document.querySelector(`[data-tab="${tabId}"]`)?.classList.add('on');
   document.getElementById(`tab-${tabId}`)?.classList.add('active');
   clearInterval(chatInterval);
-  if(tabId === 'chat') {
-    renderChatUsers();
-    chatInterval = setInterval(dfxFullSync, 3000);
-  }
+  if(tabId === 'chat') { renderChatUsers(); chatInterval = setInterval(dfxFullSync, 3000); }
   dfxFullSync();
 }
 
@@ -424,21 +514,19 @@ function renderDashboard() {
 
   let opts = '<option value="">Select client...</option>';
   (dbState.clients || []).forEach(c => opts += `<option value="${escapeHtml(c.name)}">${escapeHtml(c.name)}</option>`);
-  document.querySelectorAll(".global-client-select").forEach(sel => {
-    const prev = sel.value; sel.innerHTML = opts; if (prev) sel.value = prev;
-  });
+  document.querySelectorAll(".global-client-select").forEach(sel => { const p = sel.value; sel.innerHTML = opts; if(p) sel.value = p; });
 
   const dList = (dbState.deliverables || []).slice(0,4);
-  document.getElementById("dashDelivTable").innerHTML = dList.length ? `<table class="dfx2table"><tbody>${dList.map(d=>`<tr><td><b>${escapeHtml(d.title)}</b><br><small style="color:#888">${escapeHtml(d.client)}</small></td><td style="text-align:right"><span class="dfx2pill ${d.locked?'pending':'paid'}">${d.locked?'Locked':'Unlocked'}</span></td></tr>`).join('')}</tbody></table>` : '<div style="color:#666;font-size:11px;">No recent deliverables.</div>';
+  document.getElementById("dashDelivTable").innerHTML = dList.length ? `<table class="dfx2table"><tbody>${dList.map(d=>`<tr><td><b>${escapeHtml(d.title)}</b><br><small style="color:#888">${escapeHtml(d.client)}</small></td><td style="text-align:right"><span class="dfx2pill ${d.locked?'pending':'paid'}">${d.locked?'Locked':'Unlocked'}</span></td></tr>`).join('')}</tbody></table>` : '<div style="color:#666;font-size:11px;">No deliverables.</div>';
   
   const iList = (dbState.invoices || []).slice(0,4);
-  document.getElementById("dashInvTable").innerHTML = iList.length ? `<table class="dfx2table"><tbody>${iList.map(i=>`<tr><td><b>${escapeHtml(i.number)}</b><br><small style="color:#888">${escapeHtml(i.client)}</small></td><td style="text-align:right"><span class="dfx2pill ${i.status==='PAID'?'paid':'pending'}">${escapeHtml(i.status)}</span></td></tr>`).join('')}</tbody></table>` : '<div style="color:#666;font-size:11px;">No recent invoices.</div>';
+  document.getElementById("dashInvTable").innerHTML = iList.length ? `<table class="dfx2table"><tbody>${iList.map(i=>`<tr><td><b>${escapeHtml(i.number)}</b><br><small style="color:#888">${escapeHtml(i.client)}</small></td><td style="text-align:right"><span class="dfx2pill ${i.status==='PAID'?'paid':'pending'}">${escapeHtml(i.status)}</span></td></tr>`).join('')}</tbody></table>` : '<div style="color:#666;font-size:11px;">No invoices.</div>';
 }
 
 function renderClients() {
   const b = document.getElementById("cliTableContainer"), list = dbState.clients || [];
   if (!list.length) return b.innerHTML = '<div style="color:#666;padding:12px;">No clients.</div>';
-  b.innerHTML = `<table class="dfx2table"><thead><tr><th>NAME</th><th>INSTAGRAM</th><th>SECRET KEY</th><th>ACTIVE LICENSE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>
+  b.innerHTML = `<table class="dfx2table"><thead><tr><th>NAME</th><th>INSTAGRAM</th><th>SECRET KEY</th><th>ACTIVE TOKEN</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>
     ${list.map(c => {
       const activeKry = (dbState.kry || []).find(k => k.client === c.name && k.status === 'Active');
       const kryBadge = activeKry ? `<code style="color:var(--accent-yellow)">${escapeHtml(activeKry.token)}</code>` : `<span style="color:#666;font-size:10px">No Active Key</span>`;
@@ -460,8 +548,7 @@ async function dfxSaveClient() {
 async function dfxDeleteClient(id) {
   if(!confirm("Delete client?")) return;
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "DELETE_CLIENT", payload: { id } }) });
-  dfxToast("Client deleted");
-  dfxFullSync();
+  dfxToast("Client deleted"); dfxFullSync();
 }
 
 function renderDeliverables() {
@@ -474,216 +561,153 @@ function renderDeliverables() {
 
 function handleFileSelected(input, textId, boxId) {
   const file = input.files[0];
-  const textEl = document.getElementById(textId);
-  const boxEl = document.getElementById(boxId);
-  if(file) {
-    textEl.textContent = file.name;
-    boxEl.classList.add("selected");
-  } else {
-    textEl.textContent = "Select File";
-    boxEl.classList.remove("selected");
+  const textEl = document.getElementById(textId), boxEl = document.getElementById(boxId);
+  if(file) { textEl.textContent = file.name; boxEl.classList.add("selected"); }
+  else { 
+    textEl.textContent = textId.includes('draft') ? "Select Draft Preview File" : "Select 4K Master File"; 
+    boxEl.classList.remove("selected"); 
   }
 }
 
 async function publishDeliverableDirect() {
-  const client = document.getElementById("delivTargetClient").value;
-  const title = document.getElementById("delivTitle").value.trim();
-  const price = document.getElementById("delivPrice").value;
-  const draftFile = document.getElementById("delivDraftFile").files[0];
-  const masterFile = document.getElementById("delivMasterFile").files[0];
-  const watermarkLink = document.getElementById("delivWatermarkLink").value.trim();
-  const masterLink = document.getElementById("delivMasterLink").value.trim();
+  const client = document.getElementById("delivTargetClient").value, title = document.getElementById("delivTitle").value.trim(), price = document.getElementById("delivPrice").value;
+  const draftFile = document.getElementById("delivDraftFile").files[0], masterFile = document.getElementById("delivMasterFile").files[0];
+  const watermarkLink = document.getElementById("delivWatermarkLink").value.trim(), masterLink = document.getElementById("delivMasterLink").value.trim();
 
-  if(!client || !title) return dfxToast("Client and Title are required!", true);
-
-  const btn = document.getElementById("delivPublishBtn");
-  btn.disabled = true;
-  btn.textContent = "Uploading & Publishing...";
+  if(!client || !title) return dfxToast("Client and Title required!", true);
+  const btn = document.getElementById("delivPublishBtn"); btn.disabled = true; btn.textContent = "Publishing...";
 
   try {
     const fd = new FormData();
-    fd.append("client", client);
-    fd.append("title", title);
-    fd.append("price", price);
+    fd.append("client", client); fd.append("title", title); fd.append("price", price);
     if(draftFile) fd.append("draftFile", draftFile);
     if(masterFile) fd.append("masterFile", masterFile);
-    fd.append("watermarkLink", watermarkLink);
-    fd.append("masterLink", masterLink);
+    fd.append("watermarkLink", watermarkLink); fd.append("masterLink", masterLink);
 
-    const res = await fetch("/api/admin/publish-deliverable-upload", {
-      method: "POST",
-      credentials: "same-origin",
-      body: fd
-    });
-
-    if(!res.ok) throw new Error("PUBLISH_FAILED");
-    
+    await fetch("/api/admin/publish-deliverable-upload", { method: "POST", credentials: "same-origin", body: fd });
     document.getElementById("delivTitle").value = "";
     document.getElementById("delivDraftFile").value = "";
     document.getElementById("delivMasterFile").value = "";
     document.getElementById("delivWatermarkLink").value = "";
     document.getElementById("delivMasterLink").value = "";
-    document.getElementById("draftNameText").textContent = "Select Draft File";
+    document.getElementById("draftNameText").textContent = "Select Draft Preview File";
     document.getElementById("masterNameText").textContent = "Select 4K Master File";
     document.getElementById("draftUploaderBox").classList.remove("selected");
     document.getElementById("masterUploaderBox").classList.remove("selected");
     
     dfxToast("Deliverable Published Successfully!");
     dfxFullSync();
-  } catch(err) {
-    dfxToast("Failed to publish deliverable", true);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "🚀 Upload & Publish to Client Portal";
-  }
+  } catch(err) { dfxToast("Failed to publish deliverable", true); }
+  finally { btn.disabled = false; btn.textContent = "🚀 Upload & Publish to Client Portal"; }
 }
 
 async function dfxToggleDeliverableLock(id, locked) {
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "TOGGLE_DELIV_LOCK", payload: { id, locked } }) });
-  dfxToast(locked ? "Locked" : "Unlocked");
-  dfxFullSync();
+  dfxToast(locked ? "Locked" : "Unlocked"); dfxFullSync();
 }
 
 async function dfxDeleteDeliverable(id) {
   if(!confirm("Delete deliverable?")) return;
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "DELETE_DELIV", payload: { id } }) });
-  dfxToast("Deliverable removed");
-  dfxFullSync();
+  dfxToast("Deliverable removed"); dfxFullSync();
 }
 
 function renderUtrQueue() {
   const b = document.getElementById("utrTableContainer"), list = dbState.utr || [];
   if(!list.length) return b.innerHTML = '<div style="color:#666;padding:12px;">No pending UTR proofs.</div>';
-  b.innerHTML = `<table class="dfx2table"><thead><tr><th>CLIENT</th><th>TARGET DELIVERABLE</th><th>UTR REF</th><th>AMOUNT</th><th>ACTION</th></tr></thead><tbody>
-    ${list.map((u, i) => `<tr>
-      <td><b>${escapeHtml(u.client)}</b></td>
-      <td><span class="dfx2pill active" style="font-size:10px">${escapeHtml(u.deliverableTitle || 'Specific Deliverable')}</span></td>
-      <td><code>${escapeHtml(u.utr)}</code></td>
-      <td>${money(u.amount)}</td>
-      <td><button class="dfx-btn-sm dfx-btn-paid" onclick="dfxApproveUtr('${escapeHtml(u.id)}', '${escapeHtml(u.deliverableId || '')}', '${escapeHtml(u.client)}')">✓ Approve & Unlock This Video</button></td>
-    </tr>`).join('')}
+  b.innerHTML = `<table class="dfx2table"><thead><tr><th>CLIENT</th><th>TARGET</th><th>UTR REF</th><th>AMOUNT</th><th>ACTION</th></tr></thead><tbody>
+    ${list.map(u => `<tr><td><b>${escapeHtml(u.client)}</b></td><td><span class="dfx2pill active">${escapeHtml(u.deliverableTitle || 'Target Video')}</span></td><td><code>${escapeHtml(u.utr)}</code></td><td>${money(u.amount)}</td><td><button class="dfx-btn-sm dfx-btn-paid" onclick="dfxApproveUtr('${escapeHtml(u.id)}', '${escapeHtml(u.deliverableId || '')}', '${escapeHtml(u.client)}')">✓ Approve & Unlock</button></td></tr>`).join('')}
   </tbody></table>`;
 }
 
 async function dfxApproveUtr(utrId, deliverableId, clientName) {
-  await api("/api/admin/action", { 
-    method: "POST", 
-    body: JSON.stringify({ 
-      type: "APPROVE_UTR", 
-      payload: { utrId, deliverableId, clientName } 
-    }) 
-  });
-  dfxToast("Approved & Unlocked Target Video!");
-  dfxFullSync();
+  await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "APPROVE_UTR", payload: { utrId, deliverableId, clientName } }) });
+  dfxToast("Approved & Unlocked Video!"); dfxFullSync();
 }
 
+// 🌟 RIGID CLEAN RAW FOOTAGE GRID RENDERER
 function renderRawInspector() {
   const b = document.getElementById("rawAssetInspector"), list = dbState.raw || [];
-  if(!list.length) return b.innerHTML = '<div style="color:#666;padding:18px;text-align:center;">No raw footage assets received yet.</div>';
-
+  if(!list.length) return b.innerHTML = '<div style="color:#666;padding:24px;text-align:center;">No raw footage assets received yet.</div>';
   b.innerHTML = `<div class="raw-grid">
-    ${list.map(r => {
-      const isVideo = /\.(mp4|mov|mkv|webm|avi)$/i.test(r.filename || '');
-      const isImage = /\.(jpg|jpeg|png|webp|gif)$/i.test(r.filename || '');
-      const icon = isVideo ? "🎬" : (isImage ? "🖼️" : (r.drive ? "☁️" : "📦"));
-      
-      return `
+    ${list.map(r => `
       <div class="raw-card">
         <div>
           <div class="raw-card-head">
             <div style="display:flex;align-items:center;gap:10px;">
-              <div class="raw-icon-box">${icon}</div>
+              <div class="raw-icon-box">🎬</div>
               <div>
-                <b style="font-size:14px;color:#fff">${escapeHtml(r.client)}</b>
-                <div style="font-size:10px;color:var(--text-muted);margin-top:2px;">${escapeHtml(r.timestamp?.slice(0,10) || '-')}</div>
+                <b style="font-size:13px;color:#fff">${escapeHtml(r.client)}</b>
+                <div style="font-size:9px;color:var(--text-muted);margin-top:1px;">${escapeHtml(r.timestamp?.slice(0,10) || '-')}</div>
               </div>
             </div>
             ${r.size ? `<span class="raw-meta-badge">${(Number(r.size)/1024/1024).toFixed(1)} MB</span>` : ''}
           </div>
 
-          <div style="margin:12px 0;">
+          <div style="margin:10px 0;">
             ${r.filename ? `<div class="raw-file-title" title="${escapeHtml(r.filename)}">📄 ${escapeHtml(r.filename)}</div>` : ''}
-            ${r.drive ? `<div style="margin-top:4px;"><a href="${escapeHtml(r.drive)}" target="_blank" class="dfx-btn-sm dfx-btn-blue" style="font-size:10px;">☁️ Open Cloud Folder ↗</a></div>` : ''}
-            ${r.reference ? `<div style="margin-top:4px;"><a href="${escapeHtml(r.reference)}" target="_blank" style="color:var(--accent-purple);font-size:11px;text-decoration:none;font-weight:700;">🔗 Ref: ${escapeHtml(r.reference)}</a></div>` : ''}
+            ${r.drive ? `<a href="${escapeHtml(r.drive)}" target="_blank" class="dfx-btn-sm dfx-btn-blue" style="font-size:10px;margin-top:4px;">☁️ Open Drive ↗</a>` : ''}
+            ${r.reference ? `<div style="font-size:10px;color:var(--accent-purple);margin-top:4px;word-break:break-all;">🔗 Ref: ${escapeHtml(r.reference)}</div>` : ''}
           </div>
 
-          ${r.note ? `<div class="raw-notes-box"><b>📝 Client Note:</b><br>${escapeHtml(r.note)}</div>` : ''}
+          ${r.note ? `<div class="raw-notes-box"><b>📝 Note:</b> ${escapeHtml(r.note)}</div>` : ''}
         </div>
-
         <div class="raw-actions-bar">
-          <div style="display:flex;gap:6px;flex-wrap:wrap;">
-            ${(isVideo && r.fileUrl) ? `<button type="button" class="dfx-btn-sm dfx-btn-play" onclick="openRawVideoModal('${r.fileUrl}', '${escapeHtml(r.filename)}', '${escapeHtml(r.client)}', '${escapeHtml(r.note || '')}')">▶ Play Preview</button>` : ''}
-            ${r.fileUrl ? `<a href="${escapeHtml(r.fileUrl)}" download class="dfx-btn-sm dfx-btn-paid">⬇ Download</a>` : ''}
+          <div style="display:flex;gap:6px;">
+            ${r.fileUrl ? `<button type="button" class="dfx-btn-sm dfx-btn-play" onclick="openRawVideoModal('${r.fileUrl}', '${escapeHtml(r.filename)}', '${escapeHtml(r.client)}', '${escapeHtml(r.note || '')}')">▶ Play</button><a href="${escapeHtml(r.fileUrl)}" download class="dfx-btn-sm dfx-btn-paid">⬇ Download</a>` : ''}
           </div>
           <button type="button" class="dfx-btn-sm dfx-btn-del" onclick="dfxDeleteRaw('${r.id}')">🗑️</button>
         </div>
       </div>
-      `;
-    }).join('')}
+    `).join('')}
   </div>`;
 }
 
 function openRawVideoModal(videoUrl, filename, client, note) {
-  const modal = document.getElementById("rawVideoModal");
-  const player = document.getElementById("adminRawPlayer");
+  const modal = document.getElementById("rawVideoModal"), player = document.getElementById("adminRawPlayer");
   document.getElementById("modalVideoTitle").textContent = filename;
   document.getElementById("modalVideoMeta").textContent = `Uploaded by ${client}`;
   document.getElementById("modalVideoNote").textContent = note ? `Note: "${note}"` : "";
   document.getElementById("modalDownloadBtn").href = videoUrl;
-
-  player.src = videoUrl;
-  modal.classList.add("active");
-  player.play().catch(() => {});
+  player.src = videoUrl; modal.classList.add("active"); player.play().catch(() => {});
 }
 
 function closeRawVideoModal() {
   const player = document.getElementById("adminRawPlayer");
-  if(player) {
-    player.pause();
-    player.src = "";
-  }
+  if(player) { player.pause(); player.src = ""; }
   document.getElementById("rawVideoModal").classList.remove("active");
 }
-
-function handleOverlayBackdropClick(e) {
-  if (e.target.id === "rawVideoModal") {
-    closeRawVideoModal();
-  }
-}
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") closeRawVideoModal();
-});
 
 async function dfxDeleteRaw(id) {
   if(!confirm("Delete raw record?")) return;
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "DELETE_RAW", payload: { id } }) });
-  dfxToast("Record deleted");
-  dfxFullSync();
+  dfxToast("Record deleted"); dfxFullSync();
 }
 
 function renderKry() {
   const b = document.getElementById("kryTableContainer"), list = dbState.kry || [];
   if(!list.length) return b.innerHTML = '<div style="color:#666;padding:12px;">No license tokens.</div>';
-  b.innerHTML = `<table class="dfx2table"><thead><tr><th>CLIENT</th><th>TOKEN</th><th>TIER</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>
-    ${list.map(k => `<tr><td><b>${escapeHtml(k.client)}</b></td><td><code style="color:var(--accent)">${escapeHtml(k.token)}</code></td><td>${escapeHtml(k.tier)}</td><td><span class="dfx2pill ${k.status==='Active'?'active':'revoked'}">${escapeHtml(k.status)}</span></td><td><button class="dfx-btn-sm ${k.status==='Active'?'dfx-btn-del':'dfx-btn-paid'}" onclick="dfxToggleKryStatus('${k.id}')">${k.status==='Active'?'🚫 Revoke':'✓ Activate'}</button></td></tr>`).join('')}
+  b.innerHTML = `<table class="dfx2table"><thead><tr><th>CLIENT</th><th>TOKEN</th><th>DEVICE BIND</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>
+    ${list.map(k => `<tr><td><b>${escapeHtml(k.client)}</b></td><td><code style="color:var(--accent)">${escapeHtml(k.token)}</code></td><td><small>${k.boundDeviceId ? '🔒 Bound to Device' : '🔓 Unlocked'}</small></td><td><span class="dfx2pill ${k.status==='Active'?'active':'revoked'}">${escapeHtml(k.status)}</span></td><td><div style="display:flex;gap:4px;"><button class="dfx-btn-sm ${k.status==='Active'?'dfx-btn-del':'dfx-btn-paid'}" onclick="dfxToggleKryStatus('${k.id}')">${k.status==='Active'?'Revoke':'Activate'}</button>${k.boundDeviceId ? `<button class="dfx-btn-sm dfx-btn-blue" onclick="dfxResetKryDevice('${k.id}')">Reset Device</button>` : ''}</div></td></tr>`).join('')}
   </tbody></table>`;
 }
 
 async function dfxGenerateKryKey() {
   const client = document.getElementById("kryClientSelect").value, tier = document.getElementById("kryTierSelect").value;
   if(!client) return dfxToast("Select a client first!", true);
-  const randomHash = Math.random().toString(36).substring(2, 8).toUpperCase();
-  const token = "KRY-" + new Date().getFullYear() + "-" + randomHash;
-  await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "GENERATE_KRY", payload: { id: "KRY-" + Date.now(), client, token, tier, status: "Active", createdAt: new Date().toISOString() } }) });
-  dfxToast("Token Issued!");
-  dfxFullSync();
+  const token = "KRY-" + new Date().getFullYear() + "-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+  await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "GENERATE_KRY", payload: { id: "KRY-" + Date.now(), client, token, tier, status: "Active", boundDeviceId: null } }) });
+  dfxToast("Token Issued!"); dfxFullSync();
 }
 
 async function dfxToggleKryStatus(id) {
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "TOGGLE_KRY", payload: { id } }) });
-  dfxToast("Key Status Updated");
-  dfxFullSync();
+  dfxToast("Key Updated"); dfxFullSync();
+}
+
+async function dfxResetKryDevice(id) {
+  await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "RESET_KRY_DEVICE", payload: { id } }) });
+  dfxToast("Device binding reset!"); dfxFullSync();
 }
 
 function renderReviews() {
@@ -697,11 +721,7 @@ function renderReviews() {
 function dfxhRender() {
   const q = (document.getElementById("dfxhSearch")?.value || "").toLowerCase().trim();
   const f = document.getElementById("dfxhFilter")?.value || "ALL";
-  const list = (dbState.invoices || []).filter(inv => {
-    const tMatch = !q || (String(inv.number) + " " + String(inv.client)).toLowerCase().includes(q);
-    const sMatch = (f === "ALL" || inv.status === f || (f === "SENT" && inv.status !== "PAID"));
-    return tMatch && sMatch;
-  });
+  const list = (dbState.invoices || []).filter(inv => (!q || (String(inv.number) + " " + String(inv.client)).toLowerCase().includes(q)) && (f === "ALL" || inv.status === f));
   renderInvoices(list);
 }
 
@@ -709,22 +729,20 @@ function renderInvoices(list) {
   const b = document.getElementById("dfxhTable");
   if (!b) return;
   if (!list.length) return b.innerHTML = '<div style="color:#666;padding:12px;">No invoices.</div>';
-  b.innerHTML = `<table class="dfx2table"><thead><tr><th>INVOICE NO</th><th>CLIENT</th><th>TOTAL</th><th>BALANCE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>
-    ${list.map(i => `<tr><td><b>${escapeHtml(i.number)}</b></td><td>${escapeHtml(i.client)}</td><td>${money(i.total)}</td><td><b style="color:${i.balance>0?'var(--accent)':'var(--accent-green)'}">${money(i.balance)}</b></td><td><span class="dfx2pill ${i.status==='PAID'?'paid':'pending'}">${escapeHtml(i.status)}</span></td><td><div style="display:flex;gap:6px;"><button class="dfx-btn-sm dfx-btn-paid" onclick="dfxQuickPay('${escapeHtml(i.number)}')">✓ Mark Paid</button><button class="dfx-btn-sm dfx-btn-del" onclick="dfxDeleteInvoice('${escapeHtml(i.number)}')">🗑️</button></div></td></tr>`).join('')}
+  b.innerHTML = `<table class="dfx2table"><thead><tr><th>NO</th><th>CLIENT</th><th>TOTAL</th><th>BALANCE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody>
+    ${list.map(i => `<tr><td><b>${escapeHtml(i.number)}</b></td><td>${escapeHtml(i.client)}</td><td>${money(i.total)}</td><td><b style="color:${i.balance>0?'var(--accent)':'var(--accent-green)'}">${money(i.balance)}</b></td><td><span class="dfx2pill ${i.status==='PAID'?'paid':'pending'}">${escapeHtml(i.status)}</span></td><td><div style="display:flex;gap:6px;"><button class="dfx-btn-sm dfx-btn-paid" onclick="dfxQuickPay('${escapeHtml(i.number)}')">✓ Paid</button><button class="dfx-btn-sm dfx-btn-del" onclick="dfxDeleteInvoice('${escapeHtml(i.number)}')">🗑️</button></div></td></tr>`).join('')}
   </tbody></table>`;
 }
 
 async function dfxQuickPay(number) {
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "MARK_PAID_INVOICE", payload: { number } }) });
-  dfxToast("Invoice marked paid");
-  dfxFullSync();
+  dfxToast("Marked paid"); dfxFullSync();
 }
 
 async function dfxDeleteInvoice(number) {
-  if(!confirm("Delete invoice " + number + "?")) return;
+  if(!confirm("Delete invoice?")) return;
   await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "DELETE_INVOICE", payload: { number } }) });
-  dfxToast("Invoice deleted");
-  dfxFullSync();
+  dfxToast("Invoice deleted"); dfxFullSync();
 }
 
 function renderChatUsers() {
@@ -735,16 +753,51 @@ function renderChatUsers() {
 function selectChatClient(name) {
   activeChatClient = name;
   document.getElementById("activeChatClientHeader").textContent = name;
-  renderChatUsers();
-  renderChatStream();
+  renderChatUsers(); renderChatStream();
 }
 
 function renderChatStream() {
   if(!activeChatClient) return;
   const stream = document.getElementById("adminChatStream"), msgs = (dbState.chats && dbState.chats[activeChatClient]) || [];
   if(!msgs.length) return stream.innerHTML = '<div style="text-align:center;color:#666;margin-top:50px">No messages yet.</div>';
-  stream.innerHTML = msgs.map(m => `<div class="admin-bubble ${m.sender==='admin'||m.sender==='Studio'?'studio':'client'}">${escapeHtml(m.text)}</div>`).join('');
+  stream.innerHTML = msgs.map(m => {
+    const isStudio = m.sender==='admin'||m.sender==='Studio';
+    return `
+      <div class="admin-bubble-wrapper ${isStudio?'studio':'client'}">
+        <div class="admin-bubble ${isStudio?'studio':'client'}">
+          ${escapeHtml(m.text)}
+          ${m.edited ? '<small style="font-size:8px;opacity:0.6;display:block;">(edited)</small>' : ''}
+        </div>
+        ${isStudio ? `
+          <div class="chat-action-btn-row">
+            <button class="chat-mini-action" onclick="promptEditAdminMsg('${m.id}', '${escapeHtml(m.text)}')">✏️ Edit</button>
+            <button class="chat-mini-action" onclick="deleteAdminMsg('${m.id}')">🗑️ Unsend</button>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }).join('');
   stream.scrollTop = stream.scrollHeight;
+}
+
+async function promptEditAdminMsg(msgId, oldText) {
+  const newText = prompt("Edit your Studio message:", oldText);
+  if (newText && newText.trim() !== oldText) {
+    try {
+      await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "EDIT_ADMIN_CHAT", payload: { client: activeChatClient, messageId: msgId, newText: newText.trim() } }) });
+      await dfxFullSync();
+      dfxToast("Message edited ✓");
+    } catch(e) { dfxToast("Edit failed", true); }
+  }
+}
+
+async function deleteAdminMsg(msgId) {
+  if (!confirm("Unsend this message for everyone?")) return;
+  try {
+    await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "DELETE_ADMIN_CHAT", payload: { client: activeChatClient, messageId: msgId } }) });
+    await dfxFullSync();
+    dfxToast("Message unsent ✓");
+  } catch(e) { dfxToast("Unsend failed", true); }
 }
 
 async function sendAdminChatMessage() {
@@ -752,13 +805,11 @@ async function sendAdminChatMessage() {
   if(!txt || !activeChatClient) return;
   try {
     await api("/api/admin/action", { method: "POST", body: JSON.stringify({ type: "SEND_CHAT", payload: { client: activeChatClient, text: txt } }) });
-    inp.value = "";
-    dfxFullSync();
-  } catch(e) {
-    dfxToast("Message failed to send", true);
-  }
+    inp.value = ""; dfxFullSync();
+  } catch(e) { dfxToast("Message failed to send", true); }
 }
 
+// 🌟 INVOICE GENERATOR FUNCTIONS
 var invoiceNo = "DFX-" + new Date().getFullYear() + "-001";
 function addInvoiceItem() {
   const b = document.getElementById("makerItems"), r = document.createElement("div");
@@ -796,6 +847,7 @@ async function dfxSaveCurrentInvoice() {
 document.addEventListener("DOMContentLoaded", () => {
   addInvoiceItem();
   dfxTab("dashboard");
+  setInterval(dfxFullSync, 3500);
 });
 </script>
 </body>
