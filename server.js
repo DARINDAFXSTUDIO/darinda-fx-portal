@@ -108,14 +108,14 @@ webpush.setVapidDetails(
   initialDb.vapidKeys.privateKey
 );
 
-// SEND PUSH NOTIFICATION FUNCTION
+// 🔔 CLEAN PUSH NOTIFICATION SENDER
 function sendPushAlert(clientName, title, body) {
   const db = getDb();
   const targets = (db.subscriptions || []).filter(s => s.client.toLowerCase() === clientName.toLowerCase());
   targets.forEach(target => {
     webpush.sendNotification(target.subscription, JSON.stringify({
       title: title || "DARINDA.FX Studio",
-      body: body || "You have a new update in your workspace.",
+      body: body || "New update in your workspace.",
       url: "/"
     })).catch(err => {
       if (err.statusCode === 410 || err.statusCode === 404) {
@@ -350,7 +350,7 @@ app.post("/api/reviews", authGuard, (req, res) => {
   res.json({ success: true });
 });
 
-// ADMIN DELIVERABLES PUBLISH WITH TELEGRAM AUTO-FORWARDING & CLIENT PUSH ALERT
+// ADMIN DELIVERABLES PUBLISH WITH DUAL TELEGRAM AUTO-FORWARDING & CLIENT PUSH ALERT
 const adminDelivUpload = upload.fields([
   { name: "draftFile", maxCount: 1 }, 
   { name: "masterFile", maxCount: 1 }
@@ -464,8 +464,8 @@ app.post("/api/admin/action", (req, res) => {
         text: payload.text,
         time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       });
-      // 🔔 PUSH ALERT ON STUDIO MESSAGE
-      sendPushAlert(payload.client, "💬 DARINDA.FX Studio", payload.text);
+      // 🔔 PUSH ALERT ON STUDIO MESSAGE (DIRECT NATIVE BANNER)
+      sendPushAlert(payload.client, "DARINDA.FX Studio", payload.text);
     }
     else if (type === "EDIT_ADMIN_CHAT") {
       const msg = (db.chats[payload.client] || []).find(m => String(m.id) === String(payload.messageId));
