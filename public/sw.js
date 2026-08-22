@@ -1,4 +1,4 @@
-const CACHE_NAME = "darinda-fx-v2";
+const CACHE_NAME = "darinda-fx-v3";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
@@ -8,9 +8,13 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(clients.claim());
 });
 
-// 🔔 BACKGROUND PUSH NOTIFICATIONS (Lock Screen & Sound)
+// 🔔 ULTRA-CLEAN APPLE/ANDROID NATIVE NOTIFICATION
 self.addEventListener("push", (event) => {
-  let data = { title: "DARINDA.FX Studio", body: "New update in your workspace!", url: "/" };
+  let data = { 
+    title: "DARINDA.FX Studio", 
+    body: "New project update received.", 
+    url: "/" 
+  };
   
   if (event.data) {
     try {
@@ -21,29 +25,34 @@ self.addEventListener("push", (event) => {
   }
 
   const options = {
-    body: data.body || "New project deliverable or message available.",
-    icon: "/icon-192.png",
-    badge: "/icon-192.png",
-    vibrate: [200, 100, 200],
+    body: data.body,
+    icon: "/icon-192.png",       // Large App Logo
+    badge: "/icon-192.png",      // Top status bar icon
+    vibrate: [100, 50, 100],
+    tag: "dfx-notification",     // Prevents spam duplicate stacking
+    renotify: true,
     data: {
       url: data.url || "/"
-    }
+    },
+    actions: [
+      { action: "open_app", title: "⚡ Open Workspace" }
+    ]
   };
 
   event.waitUntil(
-    self.registration.showNotification(data.title || "DARINDA.FX Studio", options)
+    self.registration.showNotification(data.title, options)
   );
 });
 
-// TAP NOTIFICATION -> OPENS APP
+// ON NOTIFICATION TAP -> FOCUS OR OPEN
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
   const targetUrl = event.notification.data?.url || "/";
-  
+
   event.waitUntil(
     clients.matchAll({ type: "window", includeUncontrolled: true }).then((windowClients) => {
       for (let client of windowClients) {
-        if (client.url.includes(targetUrl) && "focus" in client) {
+        if ("focus" in client) {
           return client.focus();
         }
       }
