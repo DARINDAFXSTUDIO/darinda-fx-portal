@@ -1,1 +1,8 @@
-
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.darindafx.studio",
+        "sha256_cert_fingerprints": ["18:2C:35:92:3C:AA:BB:3D:7F:5D:43:FE:0D:DE:A2:9A:3D:42:B5:1E:F5:C5:88:34:3B:78:F2:12:36:69:8B:4D"]
+      }
+    }]
