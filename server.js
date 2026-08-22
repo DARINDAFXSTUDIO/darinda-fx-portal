@@ -24,7 +24,20 @@ fs.ensureDirSync(UPLOADS_DIR);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.static(path.join(__dirname, "public")));
+
+// 🌟 ALLOWS .well-known & HIDDEN ASSETLINKS FILES
+app.use(express.static(path.join(__dirname, "public"), { dotfiles: "allow" }));
+
+// 🌟 EXPLICIT DIGITAL ASSET LINKS ROUTE FOR TWA VERIFICATION
+app.get("/.well-known/assetlinks.json", (req, res) => {
+  const filePath = path.join(__dirname, "public", ".well-known", "assetlinks.json");
+  if (fs.existsSync(filePath)) {
+    res.setHeader("Content-Type", "application/json");
+    res.sendFile(filePath);
+  } else {
+    res.status(404).json({ error: "ASSETLINKS_NOT_FOUND" });
+  }
+});
 
 app.use("/uploads", express.static(UPLOADS_DIR, {
   setHeaders: (res) => { res.set("Accept-Ranges", "bytes"); }
