@@ -7,6 +7,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const axios = require("axios");
 const FormData = require("form-data");
+const webpush = require("web-push");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -66,6 +67,7 @@ function sanitizeChats(chats) {
 
 function getDb() {
   if (!fs.existsSync(DB_FILE)) {
+    const vapidKeys = webpush.generateVAPIDKeys();
     const initial = {
       clients: [
         { id: "CLI-01", name: "Rahul Sharma", instagram: "@rahulfitness", secretKey: "DARINDA2026", access: "Active" },
@@ -79,17 +81,50 @@ function getDb() {
       }],
       utr: [], raw: [], feedback: [{ client: "DAVE", rating: 5, text: "Insane video editing quality!" }],
       kry: [{ id: "KRY-01", client: "DAVE", token: "KRY-2026-57JUBT", tier: "VIP Preset Access", status: "Active", boundDeviceId: null }],
-      chats: { "DAVE": [{ id: "MSG-1", sender: "client", text: "Hey bro! Just uploaded raw footage.", time: "10:00 AM" }] }
+      chats: { "DAVE": [{ id: "MSG-1", sender: "client", text: "Hey bro! Just uploaded raw footage.", time: "10:00 AM" }] },
+      subscriptions: [],
+      vapidKeys: vapidKeys
     };
     fs.writeJsonSync(DB_FILE, initial, { spaces: 2 });
     return initial;
   }
   const db = fs.readJsonSync(DB_FILE);
+  if (!db.vapidKeys) {
+    db.vapidKeys = webpush.generateVAPIDKeys();
+    fs.writeJsonSync(DB_FILE, db, { spaces: 2 });
+  }
+  if (!db.subscriptions) db.subscriptions = [];
   db.chats = sanitizeChats(db.chats);
   return db;
 }
 
 function saveDb(data) { fs.writeJsonSync(DB_FILE, data, { spaces: 2 }); }
+
+// INITIALIZE VAPID
+const initialDb = getDb();
+webpush.setVapidDetails(
+  "mailto:darindafx@gmail.com",
+  initialDb.vapidKeys.publicKey,
+  initialDb.vapidKeys.privateKey
+);
+
+// SEND PUSH NOTIFICATION FUNCTION
+function sendPushAlert(clientName, title, body) {
+  const db = getDb();
+  const targets = (db.subscriptions || []).filter(s => s.client.toLowerCase() === clientName.toLowerCase());
+  targets.forEach(target => {
+    webpush.sendNotification(target.subscription, JSON.stringify({
+      title: title || "DARINDA.FX Studio",
+      body: body || "You have a new update in your workspace.",
+      url: "/"
+    })).catch(err => {
+      if (err.statusCode === 410 || err.statusCode === 404) {
+        db.subscriptions = db.subscriptions.filter(s => s.subscription.endpoint !== target.subscription.endpoint);
+        saveDb(db);
+      }
+    });
+  });
+}
 
 async function forwardToTelegram(filePath, originalname, caption) {
   if (!TG_BOT_TOKEN) return null;
@@ -127,6 +162,26 @@ function authGuard(req, res, next) {
 }
 
 app.get("/api/health", (req, res) => res.json({ ok: true, service: "darinda-fx" }));
+
+// PUSH NOTIFICATION KEYS & SUBSCRIPTION
+app.get("/api/push/public-key", (req, res) => {
+  const db = getDb();
+  res.json({ publicKey: db.vapidKeys.publicKey });
+});
+
+app.post("/api/push/subscribe", authGuard, (req, res) => {
+  const { subscription } = req.body;
+  if (!subscription || !subscription.endpoint) return res.status(400).json({ error: "INVALID_SUBSCRIPTION" });
+  
+  const db = getDb();
+  db.subscriptions = db.subscriptions || [];
+  const exists = db.subscriptions.find(s => s.subscription.endpoint === subscription.endpoint);
+  if (!exists) {
+    db.subscriptions.push({ client: req.client.name, subscription });
+    saveDb(db);
+  }
+  res.json({ success: true });
+});
 
 app.post("/api/auth/login", (req, res) => {
   const inputKey = (req.body.accessKey || "").trim().toUpperCase();
@@ -295,7 +350,7 @@ app.post("/api/reviews", authGuard, (req, res) => {
   res.json({ success: true });
 });
 
-// ADMIN DELIVERABLES PUBLISH WITH DUAL TELEGRAM AUTO-FORWARDING
+// ADMIN DELIVERABLES PUBLISH WITH TELEGRAM AUTO-FORWARDING & CLIENT PUSH ALERT
 const adminDelivUpload = upload.fields([
   { name: "draftFile", maxCount: 1 }, 
   { name: "masterFile", maxCount: 1 }
@@ -327,6 +382,9 @@ app.post("/api/admin/publish-deliverable-upload", adminDelivUpload, async (req, 
     db.deliverables = db.deliverables || [];
     db.deliverables.unshift(newDeliv);
     saveDb(db);
+
+    // 🔔 SEND BACKGROUND PUSH NOTIFICATION TO CLIENT PHONE
+    sendPushAlert(client, "🎬 New Video Ready!", `Draft render uploaded for "${title}". Tap to preview!`);
 
     res.json({ success: true });
 
@@ -365,14 +423,28 @@ app.post("/api/admin/action", (req, res) => {
 
     if (type === "SAVE_CLIENT") { db.clients.push({ id: "CLI-" + Date.now(), ...payload }); }
     else if (type === "DELETE_CLIENT") { db.clients = db.clients.filter(c => c.id !== payload.id); }
-    else if (type === "TOGGLE_DELIV_LOCK") { const d = db.deliverables.find(x => String(x.id) === String(payload.id)); if (d) d.locked = payload.locked; }
+    else if (type === "TOGGLE_DELIV_LOCK") { 
+      const d = db.deliverables.find(x => String(x.id) === String(payload.id)); 
+      if (d) {
+        d.locked = payload.locked; 
+        if (!payload.locked) {
+          sendPushAlert(d.client, "🔓 4K Master Unlocked!", `Master video for "${d.title}" is ready for download!`);
+        }
+      }
+    }
     else if (type === "DELETE_DELIV") { db.deliverables = db.deliverables.filter(d => String(d.id) !== String(payload.id)); }
     else if (type === "APPROVE_UTR") {
       db.utr = db.utr.filter(u => u.id !== payload.utrId);
       const target = db.deliverables.find(d => String(d.id) === String(payload.deliverableId));
-      if (target) target.locked = false;
+      if (target) {
+        target.locked = false;
+        sendPushAlert(target.client, "✅ Payment Verified!", `4K Master for "${target.title}" is unlocked!`);
+      }
     }
-    else if (type === "SAVE_INVOICE") { db.invoices.unshift(payload); }
+    else if (type === "SAVE_INVOICE") { 
+      db.invoices.unshift(payload); 
+      sendPushAlert(payload.client, "📄 New Invoice Issued", `Invoice #${payload.number} for ₹${payload.total} has been issued.`);
+    }
     else if (type === "DELETE_INVOICE") { db.invoices = db.invoices.filter(i => i.number !== payload.number); }
     else if (type === "MARK_PAID_INVOICE") { const inv = db.invoices.find(i => i.number === payload.number); if (inv) { inv.paid = inv.total; inv.balance = 0; inv.status = "PAID"; } }
     else if (type === "GENERATE_KRY") { db.kry.unshift(payload); }
@@ -392,6 +464,8 @@ app.post("/api/admin/action", (req, res) => {
         text: payload.text,
         time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
       });
+      // 🔔 PUSH ALERT ON STUDIO MESSAGE
+      sendPushAlert(payload.client, "💬 DARINDA.FX Studio", payload.text);
     }
     else if (type === "EDIT_ADMIN_CHAT") {
       const msg = (db.chats[payload.client] || []).find(m => String(m.id) === String(payload.messageId));
