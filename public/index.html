@@ -6,7 +6,7 @@
     <title>DARINDA.FX | Client Workspace</title>
     <!-- PWA & Mobile App Meta Tags -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#ff2a54">
+    <meta name="theme-color" content="#09090b">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,63 +16,62 @@
     <style>
         :root {
             --canvas-bg: #09090b;
-            --portal-gradient: radial-gradient(circle at 30% -10%, rgba(255, 42, 84, 0.18) 0%, transparent 60%),
-                               radial-gradient(circle at 90% 90%, rgba(59, 195, 156, 0.12) 0%, transparent 55%),
+            --portal-gradient: radial-gradient(circle at 50% -20%, rgba(255, 42, 84, 0.22) 0%, transparent 65%),
+                               radial-gradient(circle at 100% 100%, rgba(48, 209, 88, 0.12) 0%, transparent 60%),
                                #09090b;
-            --glass-bg: rgba(20, 21, 26, 0.72);
-            --glass-border-top: rgba(255, 255, 255, 0.12);
-            --glass-border-bot: rgba(0, 0, 0, 0.6);
-            --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            --glass-bg: rgba(18, 18, 23, 0.78);
+            --glass-border-top: rgba(255, 255, 255, 0.14);
+            --glass-border-bot: rgba(0, 0, 0, 0.7);
+            --glass-shadow: 0 35px 70px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.12);
             --glass-pressed: inset 0 2px 5px rgba(0, 0, 0, 0.6);
-            --element-bg: rgba(255, 255, 255, 0.04);
-            --element-border-top: rgba(255, 255, 255, 0.08);
+            --element-bg: rgba(255, 255, 255, 0.045);
+            --element-border-top: rgba(255, 255, 255, 0.09);
             --element-border-bot: rgba(0, 0, 0, 0.5);
-            --element-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            --element-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
             --accent: #ff2a54;
-            --accent-glow: rgba(255, 42, 84, 0.45);
-            --accent-gradient: linear-gradient(135deg, #ff2a54 0%, #d80027 100%);
+            --accent-glow: rgba(255, 42, 84, 0.5);
+            --accent-gradient: linear-gradient(135deg, #ff2a54 0%, #c40023 100%);
             --accent-green: #30d158;
             --star-gold: #ffd60a;
             --text-main: #f5f5f7;
-            --text-muted: #a1a1a6;
-            --input-bg: rgba(0, 0, 0, 0.35);
-            --nav-bg: rgba(14, 15, 18, 0.88);
+            --text-muted: #8e8e93;
+            --input-bg: rgba(0, 0, 0, 0.4);
+            --nav-bg: rgba(16, 16, 20, 0.88);
             --spring: cubic-bezier(0.25, 1, 0.5, 1);
             --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         [data-theme="light"] {
             --canvas-bg: #f4f1eb;
-            --portal-gradient: radial-gradient(circle at 30% -10%, rgba(59, 195, 156, 0.2) 0%, transparent 60%),
-                               radial-gradient(circle at 90% 90%, rgba(255, 42, 84, 0.15) 0%, transparent 55%),
+            --portal-gradient: radial-gradient(circle at 50% -20%, rgba(255, 42, 84, 0.18) 0%, transparent 65%),
+                               radial-gradient(circle at 100% 100%, rgba(48, 209, 88, 0.1) 0%, transparent 60%),
                                #f4f1eb;
-            --glass-bg: rgba(255, 255, 255, 0.78);
+            --glass-bg: rgba(255, 255, 255, 0.82);
             --glass-border-top: rgba(255, 255, 255, 0.98);
             --glass-border-bot: rgba(0, 0, 0, 0.08);
-            --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.07), inset 0 1px 2px rgba(255, 255, 255, 0.95);
-            --element-bg: rgba(255, 255, 255, 0.5);
+            --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+            --element-bg: rgba(255, 255, 255, 0.65);
             --element-border-top: rgba(255, 255, 255, 0.9);
             --element-border-bot: rgba(0, 0, 0, 0.05);
             --text-main: #1d1d1f;
             --text-muted: #86868b;
-            --input-bg: rgba(255, 255, 255, 0.6);
-            --nav-bg: rgba(244, 241, 235, 0.92);
+            --input-bg: rgba(255, 255, 255, 0.7);
+            --nav-bg: rgba(244, 241, 235, 0.94);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
         body { background: var(--portal-gradient); font-family: -apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', sans-serif; color: var(--text-main); min-height: 100vh; min-height: 100dvh; display: flex; justify-content: center; align-items: center; padding: 8px; overflow-x: hidden; transition: background 0.5s ease; }
         
-        /* 🌟 105px BOTTOM PADDING (NO CUT-OFF OR OVERLAP) */
-        .app-viewport { width: 100%; max-width: 410px; height: 850px; background: var(--glass-bg); backdrop-filter: blur(45px) saturate(210%); border: 1.5px solid var(--glass-border-top); border-radius: 44px; box-shadow: var(--glass-shadow); display: flex; flex-direction: column; justify-content: space-between; padding: 16px 14px 105px 14px; position: relative; overflow: hidden; }
+        .app-viewport { width: 100%; max-width: 414px; height: 860px; background: var(--glass-bg); backdrop-filter: blur(50px) saturate(210%); border: 1.5px solid var(--glass-border-top); border-radius: 46px; box-shadow: var(--glass-shadow); display: flex; flex-direction: column; justify-content: space-between; padding: 16px 14px 105px 14px; position: relative; overflow: hidden; }
         @media (max-width: 480px) { body { padding: 0; } .app-viewport { max-width: 100%; height: 100vh; height: 100dvh; border-radius: 0; border: none; box-shadow: none; padding: 12px 12px 105px 12px; } }
 
-        #appleToast { position: absolute; top: 14px; left: 50%; transform: translateX(-50%) translateY(-70px) scale(0.9); background: rgba(20, 20, 25, 0.95); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); z-index: 100000; opacity: 0; pointer-events: none; transition: all 0.4s var(--bounce); }
+        #appleToast { position: absolute; top: 14px; left: 50%; transform: translateX(-50%) translateY(-70px) scale(0.9); background: rgba(24, 24, 29, 0.94); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 9px 20px; border-radius: 999px; font-size: 11.5px; font-weight: 700; display: flex; align-items: center; gap: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); z-index: 100000; opacity: 0; pointer-events: none; transition: all 0.4s var(--bounce); }
         #appleToast.show { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
 
         /* Login Overlay */
-        #authOverlay { position: fixed; inset: 0; background: rgba(8, 8, 12, 0.85); backdrop-filter: blur(35px) saturate(150%); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 24px; }
+        #authOverlay { position: fixed; inset: 0; background: rgba(6, 6, 9, 0.88); backdrop-filter: blur(40px) saturate(180%); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 24px; }
         #authOverlay.hidden { display: none !important; }
-        .liquid-auth-card { width: 100%; max-width: 350px; background: linear-gradient(135deg, rgba(35,35,42,0.75) 0%, rgba(15,15,20,0.55) 100%); backdrop-filter: blur(50px) saturate(200%); border: 1.5px solid rgba(255, 255, 255, 0.15); border-radius: 40px; padding: 40px 26px; text-align: center; box-shadow: 0 40px 80px rgba(0,0,0,0.9); }
+        .liquid-auth-card { width: 100%; max-width: 350px; background: linear-gradient(135deg, rgba(30,30,36,0.85) 0%, rgba(12,12,16,0.65) 100%); backdrop-filter: blur(50px) saturate(200%); border: 1.5px solid rgba(255, 255, 255, 0.16); border-radius: 40px; padding: 40px 26px; text-align: center; box-shadow: 0 45px 90px rgba(0,0,0,0.95); }
         .liquid-input { width: 100%; background: var(--input-bg); border: 1px solid var(--glass-border-top); border-radius: 16px; padding: 16px; color: var(--text-main); font-size: 13px; font-weight: 700; outline: none; margin-bottom: 12px; }
         .btn-auth-premium { width: 100%; padding: 16px; border-radius: 16px; background: var(--accent-gradient); border: none; font-size: 14px; font-weight: 800; color: #fff; cursor: pointer; box-shadow: 0 8px 25px var(--accent-glow); }
 
@@ -100,34 +99,35 @@
         .tab-pane.active { display: flex; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        .glass-card { background: var(--glass-bg); backdrop-filter: blur(35px) saturate(180%); border-radius: 26px; padding: 16px; border: 1px solid var(--glass-border-top); box-shadow: var(--glass-shadow); position: relative; }
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(40px) saturate(190%); border-radius: 28px; padding: 16px; border: 1px solid var(--glass-border-top); box-shadow: var(--glass-shadow); position: relative; }
         .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .card-title { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
-        .glass-panel { background: var(--element-bg); border: 1px solid var(--element-border-top); border-radius: 14px; box-shadow: var(--element-shadow); }
+        .card-title { font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+        .glass-panel { background: var(--element-bg); border: 1px solid var(--element-border-top); border-radius: 16px; box-shadow: var(--element-shadow); }
 
-        .fitness-ring-wrapper { display: flex; align-items: center; justify-content: center; margin: 2px 0 10px 0; }
-        .fitness-ring { width: 95px; height: 95px; border-radius: 50%; background: conic-gradient(var(--accent) 0% var(--ring-progress, 0%), rgba(150, 150, 150, 0.15) var(--ring-progress, 0%) 100%); display: flex; align-items: center; justify-content: center; padding: 4px; }
-        .fitness-ring-inner { width: 77px; height: 77px; background: var(--glass-bg); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .fitness-ring-wrapper { display: flex; align-items: center; justify-content: center; margin: 4px 0 12px 0; }
+        .fitness-ring { width: 98px; height: 98px; border-radius: 50%; background: conic-gradient(var(--accent) 0% var(--ring-progress, 0%), rgba(150, 150, 150, 0.15) var(--ring-progress, 0%) 100%); display: flex; align-items: center; justify-content: center; padding: 4px; }
+        .fitness-ring-inner { width: 80px; height: 80px; background: var(--glass-bg); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .ring-val { font-size: 15px; font-weight: 900; }
         .ring-sub { font-size: 8px; font-weight: 800; text-transform: uppercase; color: var(--accent); margin-top: 2px; }
         .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
-        .metric-tile { padding: 9px; text-align: center; }
-        .metric-num { font-size: 14px; font-weight: 900; margin-bottom: 2px; }
-        .metric-lbl { font-size: 8px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+        .metric-tile { padding: 10px; text-align: center; }
+        .metric-num { font-size: 14.5px; font-weight: 900; margin-bottom: 2px; }
+        .metric-lbl { font-size: 8.5px; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
 
         .date-strip { display: flex; justify-content: space-between; padding: 4px; gap: 4px; border-radius: 14px; margin-bottom: 4px; }
-        .date-item { flex: 1; text-align: center; padding: 5px 2px; border-radius: 10px; font-size: 8px; font-weight: 700; color: var(--text-muted); cursor: pointer; }
+        .date-item { flex: 1; text-align: center; padding: 6px 2px; border-radius: 10px; font-size: 8.5px; font-weight: 700; color: var(--text-muted); cursor: pointer; transition: all 0.2s var(--spring); }
         .date-item.active { background: var(--accent-gradient); color: #fff; box-shadow: 0 4px 12px var(--accent-glow); transform: scale(1.04); }
-        .date-item .day-num { font-size: 11px; font-weight: 900; display: block; margin-bottom: 1px; color: inherit; }
+        .date-item .day-num { font-size: 11.5px; font-weight: 900; display: block; margin-bottom: 1px; color: inherit; }
 
         .apple-input { width: 100%; background: var(--input-bg); border: 1px solid var(--glass-border-top); border-radius: 14px; padding: 12px 14px; color: var(--text-main); font-size: 13px; font-weight: 600; outline: none; margin-bottom: 8px; min-height: 44px; }
-        .btn-apple { width: 100%; padding: 13px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.3); font-size: 13px; font-weight: 800; cursor: pointer; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; }
+        .btn-apple { width: 100%; padding: 13px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.3); font-size: 13px; font-weight: 800; cursor: pointer; min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 6px; text-decoration: none; transition: transform 0.2s var(--spring); }
+        .btn-apple:active { transform: scale(0.98); }
         .btn-primary { background: var(--accent-gradient); color: #fff; border: none; box-shadow: 0 8px 25px var(--accent-glow); }
         .btn-secondary { background: var(--glass-bg); color: var(--text-main); }
         .btn-success { background: linear-gradient(135deg, #30d158 0%, #249d42 100%); color: #fff; border: none; box-shadow: 0 8px 25px rgba(48,209,88,0.35); }
 
         /* UPLOADER */
-        .raw-upload-zone { position: relative; border: 1.5px dashed rgba(255, 42, 84, 0.55); background: rgba(255, 42, 84, 0.08); border-radius: 20px; padding: 22px 14px; text-align: center; cursor: pointer; margin-bottom: 10px; }
+        .raw-upload-zone { position: relative; border: 1.5px dashed rgba(255, 42, 84, 0.55); background: rgba(255, 42, 84, 0.08); border-radius: 22px; padding: 22px 14px; text-align: center; cursor: pointer; margin-bottom: 10px; }
         .raw-file-input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
         .raw-file-list { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 10px; }
         .raw-file-row { display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 12px; background: rgba(255, 255, 255, 0.05); text-align: left; }
@@ -137,16 +137,16 @@
         .raw-file-size { font-size: 9px; color: var(--text-muted); margin-top: 2px; }
         .raw-file-remove { width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 42, 84, 0.15); color: var(--accent); border: 1px solid rgba(255, 42, 84, 0.3); cursor: pointer; display: grid; place-items: center; }
 
-        /* 🎬 WATERMARKED VIDEO PLAYER */
+        /* 🎬 VIDEO PLAYER & DELIVERABLES */
         .deliverable-card { padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-        .paywall-wrapper { background: radial-gradient(circle at center, rgba(255, 42, 84, 0.12) 0%, transparent 80%); border: 1.5px dashed var(--accent); border-radius: 18px; padding: 16px 12px; text-align: center; margin-bottom: 10px; }
-        .lock-icon-circle { width: 42px; height: 42px; background: rgba(255, 42, 84, 0.15); border: 1px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 6px auto; }
-        .video-player-box { position: relative; width: 100%; height: 220px; background: #000; border-radius: 16px; overflow: hidden; margin-bottom: 10px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border-top); }
+        .paywall-wrapper { background: radial-gradient(circle at center, rgba(255, 42, 84, 0.14) 0%, transparent 80%); border: 1.5px dashed var(--accent); border-radius: 20px; padding: 18px 12px; text-align: center; margin-bottom: 10px; }
+        .lock-icon-circle { width: 44px; height: 44px; background: rgba(255, 42, 84, 0.15); border: 1px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 8px auto; }
+        .video-player-box { position: relative; width: 100%; height: 220px; background: #000; border-radius: 18px; overflow: hidden; margin-bottom: 10px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); border: 1px solid var(--glass-border-top); }
         .video-player-box iframe, .video-player-box video { width: 100%; height: 100%; border: none; display: block; object-fit: contain; background: #000; }
-        .watermark-overlay { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.15); z-index: 10; }
-        .watermark-badge { color: #fff; font-size: 11px; font-weight: 900; letter-spacing: 2px; transform: rotate(-14deg); padding: 6px 14px; border-radius: 8px; background: rgba(10, 8, 14, 0.85); border: 1.5px dashed var(--accent); box-shadow: 0 0 20px var(--accent-glow); }
+        .watermark-overlay { position: absolute; inset: 0; pointer-events: none; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.18); z-index: 10; }
+        .watermark-badge { color: #fff; font-size: 11.5px; font-weight: 900; letter-spacing: 2px; transform: rotate(-14deg); padding: 7px 16px; border-radius: 10px; background: rgba(10, 8, 14, 0.88); border: 1.5px dashed var(--accent); box-shadow: 0 0 25px var(--accent-glow); }
 
-        /* 🌟 PRICING TIERS IN BILLS TAB */
+        /* PRICING TIERS */
         .catalog-tier-card { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border-top); border-radius: 18px; padding: 14px; margin-bottom: 10px; }
         .catalog-tier-card.featured { border-color: rgba(255, 214, 10, 0.5); background: linear-gradient(145deg, rgba(255, 214, 10, 0.08) 0%, rgba(255, 42, 84, 0.04) 100%); }
         .catalog-top-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
@@ -166,7 +166,7 @@
         .chat-bubble-row { display: flex; flex-direction: column; max-width: 80%; }
         .chat-bubble-row.client { align-self: flex-end; align-items: flex-end; }
         .chat-bubble-row.admin { align-self: flex-start; align-items: flex-start; }
-        .chat-bubble { padding: 10px 14px; font-size: 11px; line-height: 1.4; border-radius: 18px; word-break: break-word; }
+        .chat-bubble { padding: 10px 14px; font-size: 11.5px; line-height: 1.4; border-radius: 18px; word-break: break-word; }
         .chat-bubble.admin { background: var(--element-bg); border: 1px solid var(--element-border-top); color: var(--text-main); border-bottom-left-radius: 4px; }
         .chat-bubble.client { background: var(--accent-gradient); color: #fff; border-bottom-right-radius: 4px; }
         .chat-client-actions { display: flex; gap: 6px; margin-top: 2px; }
@@ -176,8 +176,8 @@
         .chat-input-bar input { flex: 1; background: transparent; border: none; outline: none; color: var(--text-main); font-size: 13px; font-family: inherit; }
         .chat-send-btn { width: 38px; height: 38px; border-radius: 50%; background: var(--accent); border: none; color: #fff; display: grid; place-items: center; cursor: pointer; flex-shrink: 0; }
 
-        .apple-tab-bar { position: absolute; bottom: max(12px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: calc(100% - 20px); max-width: 370px; background: var(--nav-bg); backdrop-filter: blur(40px) saturate(200%); border: 1px solid var(--glass-border-top); border-radius: 24px; display: flex; justify-content: space-around; align-items: center; padding: 5px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); z-index: 9999; }
-        .tab-btn { background: transparent; border: none; color: var(--text-muted); font-size: 9px; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 6px; border-radius: 16px; flex: 1; transition: all 0.3s var(--spring); }
+        .apple-tab-bar { position: absolute; bottom: max(12px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: calc(100% - 20px); max-width: 374px; background: var(--nav-bg); backdrop-filter: blur(45px) saturate(210%); border: 1px solid var(--glass-border-top); border-radius: 26px; display: flex; justify-content: space-around; align-items: center; padding: 5px; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4); z-index: 9999; }
+        .tab-btn { background: transparent; border: none; color: var(--text-muted); font-size: 9px; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 6px; border-radius: 18px; flex: 1; transition: all 0.3s var(--spring); }
         .tab-btn svg { width: 18px; height: 18px; fill: currentColor; pointer-events: none; }
         .tab-btn.active { background: rgba(255, 42, 84, 0.15); color: var(--accent); font-weight: 800; box-shadow: var(--glass-pressed); }
     </style>
@@ -215,10 +215,10 @@
     <!-- LOGIN OVERLAY -->
     <div id="authOverlay">
         <div class="auth-card liquid-auth-card" id="loginCard">
-            <div class="auth-logo-badge" style="width:54px;height:54px;background:#0b0c10;border-radius:16px;display:grid;place-items:center;margin:0 auto 16px auto;border:1.5px solid var(--accent);box-shadow:0 10px 30px var(--accent-glow);">
-                <svg width="24" height="24" viewBox="0 0 100 100" fill="none"><path d="M20 20 L60 20 Q85 20 85 50 Q85 80 60 80 L20 80 Z" fill="#fff" /><path d="M45 20 L80 20 Q95 20 95 50 Q95 80 80 80 L45 80 Z" fill="#ff2a54" opacity="0.85" /><text x="28" y="70" font-family="Plus Jakarta Sans, sans-serif" font-weight="900" font-size="52" fill="#111">DF</text></svg>
+            <div class="auth-logo-badge" style="width:56px;height:56px;background:#0b0c10;border-radius:18px;display:grid;place-items:center;margin:0 auto 16px auto;border:1.5px solid var(--accent);box-shadow:0 10px 30px var(--accent-glow);">
+                <svg width="26" height="26" viewBox="0 0 100 100" fill="none"><path d="M20 20 L60 20 Q85 20 85 50 Q85 80 60 80 L20 80 Z" fill="#fff" /><path d="M45 20 L80 20 Q95 20 95 50 Q95 80 80 80 L45 80 Z" fill="#ff2a54" opacity="0.85" /><text x="28" y="70" font-family="Plus Jakarta Sans, sans-serif" font-weight="900" font-size="52" fill="#111">DF</text></svg>
             </div>
-            <h1 style="font-size: 24px; font-weight: 900; margin-bottom: 6px;">Welcome Back</h1>
+            <h1 style="font-size: 24px; font-weight: 900; margin-bottom: 6px;">Client Workspace</h1>
             <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 24px;">Enter your access code or VIP license key.</p>
             
             <form id="authForm" onsubmit="event.preventDefault(); handleClientAuth();">
@@ -470,10 +470,54 @@
 </div>
 
 <script>
+// 🔔 VAPID PUSH NOTIFICATION HANDSHAKE HELPER
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+}
+
+// 🔔 AUTO-REGISTER PUSH NOTIFICATION TOKEN WITH SERVER
+async function syncPushSubscription() {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) return;
+    try {
+        const reg = await navigator.serviceWorker.ready;
+        let sub = await reg.pushManager.getSubscription();
+        
+        if (!sub) {
+            const keyRes = await backendApi('/api/push/public-key');
+            if (!keyRes?.publicKey) return;
+            
+            sub = await reg.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlBase64ToUint8Array(keyRes.publicKey)
+            });
+        }
+        
+        if (sub) {
+            await backendApi('/api/push/subscribe', {
+                method: 'POST',
+                body: JSON.stringify({ subscription: sub })
+            });
+            console.log('✅ Push notification subscription active');
+        }
+    } catch (e) {
+        console.log('Push subscription sync notice:', e);
+    }
+}
+
 let swRegistration = null;
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', async () => {
-    try { swRegistration = await navigator.serviceWorker.register('/sw.js'); } catch (e) {}
+    try { 
+        swRegistration = await navigator.serviceWorker.register('/sw.js');
+        if (window.currentClient) syncPushSubscription();
+    } catch (e) {}
   });
 }
 
@@ -485,9 +529,9 @@ function playChime() {
         osc.connect(gain); gain.connect(ctx.destination);
         osc.type = "sine"; osc.frequency.setValueAtTime(587.33, ctx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.15);
-        gain.gain.setValueAtTime(0.1, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
-        osc.start(); osc.stop(ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.22);
+        osc.start(); osc.stop(ctx.currentTime + 0.22);
     } catch(e) {}
 }
 
@@ -578,8 +622,10 @@ async function handleClientAuth(autoKey = null) {
         playChime();
         showAppleToast(`Welcome back, ${window.currentClient}!`, "👋");
         window.dfxRefreshClientPortal();
-        if ('Notification' in window && Notification.permission === 'default') {
-          Notification.requestPermission();
+        
+        // REQUEST PUSH PERMISSION & SYNC TOKEN
+        if ('Notification' in window) {
+            Notification.requestPermission().then(() => syncPushSubscription());
         }
     } catch (err) {
         document.getElementById("authBtnText").textContent = "Unlock Workspace ➔";
@@ -608,6 +654,7 @@ async function handleLogout() {
             document.getElementById("authOverlay").classList.add("hidden");
             document.getElementById("clientWelcomeTitle").textContent = `${window.currentClient}'s Workspace`;
             window.dfxRefreshClientPortal();
+            syncPushSubscription();
         } else {
             const savedToken = localStorage.getItem("dfx_saved_token");
             if (savedToken) handleClientAuth(savedToken);
@@ -630,7 +677,6 @@ window.dfxRefreshClientPortal = async function() {
         const raw = data.raw || [];
         const activeKry = (data.kry || []).find(k => k.status === 'Active');
 
-        // BATCH GROUPING: 10 clips from same upload = 1 order
         const rawBatches = new Set(raw.map(r => r.batchId || r.id));
         const totalOrdersCount = Math.max(rawBatches.size, deliverables.length, invoices.length, 0);
         
@@ -658,9 +704,9 @@ window.dfxRefreshClientPortal = async function() {
             document.getElementById("clientLicenseCard").style.display = "none";
         }
 
-        document.getElementById("invoicesListContainer").innerHTML = invoices.length ? invoices.map(i => `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--element-border-bot);"><div><div style="font-weight:800;font-size:11px;">${sanitizeText(i.number)}</div><div style="font-size:8px;color:var(--text-muted);">${sanitizeText(i.date || '-')}</div></div><div style="text-align:right;"><div style="font-weight:900;font-size:11px;">₹${Number(i.total||0).toLocaleString("en-IN")}</div><div style="font-size:8px;font-weight:800;color:${i.status === 'PAID' ? 'var(--accent-green)' : 'var(--accent)'};">${sanitizeText(i.status)}</div></div></div>`).join('') : '<div class="empty-state">No active invoices issued yet.</div>';
+        document.getElementById("invoicesListContainer").innerHTML = invoices.length ? invoices.map(i => `<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--element-border-bot);"><div><div style="font-weight:800;font-size:11px;">${sanitizeText(i.number)}</div><div style="font-size:8px;color:var(--text-muted);">${sanitizeText(i.date || '-')}</div></div><div style="text-align:right;"><div style="font-weight:900;font-size:11px;">₹${Number(i.total||0).toLocaleString("en-IN")}</div><div style="font-size:8px;font-weight:800;color:${i.status === 'PAID' ? 'var(--accent-green)' : 'var(--accent)'};">${sanitizeText(i.status)}</div></div></div>`).join('') : '<div class="empty-state" style="text-align:center;padding:16px;font-size:11px;color:var(--text-muted);">No active invoices issued yet.</div>';
 
-        document.getElementById("delivCardsContainer").innerHTML = deliverables.length ? deliverables.map(d => `<div class="glass-panel deliverable-card" onclick="openDeliverable('${sanitizeText(d.id)}')"><div><div style="font-weight:800;font-size:11px;margin-bottom:2px;">${sanitizeText(d.title)}</div><div style="font-size:8px;font-weight:800;color:${d.locked ? 'var(--accent)' : 'var(--accent-green)'};">${d.locked ? '🔒 Payment Pending • ₹' + sanitizeText(d.price) : '✅ Unlocked • 4K Master Ready'}</div></div><span style="font-size:10px;font-weight:900;color:${d.locked ? 'var(--accent)' : 'var(--accent-green)'};">${d.locked ? 'Pay ➔' : 'View ➔'}</span></div>`).join('') : '<div class="empty-state">No deliverables published yet.</div>';
+        document.getElementById("delivCardsContainer").innerHTML = deliverables.length ? deliverables.map(d => `<div class="glass-panel deliverable-card" onclick="openDeliverable('${sanitizeText(d.id)}')"><div><div style="font-weight:800;font-size:11px;margin-bottom:2px;">${sanitizeText(d.title)}</div><div style="font-size:8px;font-weight:800;color:${d.locked ? 'var(--accent)' : 'var(--accent-green)'};">${d.locked ? '🔒 Payment Pending • ₹' + sanitizeText(d.price) : '✅ Unlocked • 4K Master Ready'}</div></div><span style="font-size:10px;font-weight:900;color:${d.locked ? 'var(--accent)' : 'var(--accent-green)'};">${d.locked ? 'Pay ➔' : 'View ➔'}</span></div>`).join('') : '<div class="empty-state" style="text-align:center;padding:16px;font-size:11px;color:var(--text-muted);">No deliverables published yet.</div>';
         renderReviews();
     } catch (err) { if (err.status === 401) handleLogout(); }
 };
